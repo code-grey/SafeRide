@@ -108,3 +108,18 @@ Cache: Redis
 IoT: Raspberry Pi Pico W (MicroPython)
 
 Blockchain: Solana Devnet
+
+## Phase 5: The AI Upgrade - "Project Hawkeye" (Bonus Round)
+
+**Objective:** Replace/Augment manual IoT simulation with real-time Computer Vision.
+
+**Strategy:**
+*   **Local Execution:** Run Python CV agent on the host machine (Laptop) to access Webcam hardware directly (bypassing Docker USB passthrough issues).
+*   **Logic:** Use MediaPipe Face Mesh to calculate:
+    *   **EAR (Eye Aspect Ratio):** For Drowsiness detection.
+    *   **Head Pose (Yaw/Pitch):** For Distraction detection.
+*   **Integration:** The Python script acts as a second MQTT Publisher, spoofing the `v-101` vehicle ID to control the dashboard seamlessly.
+
+**Tech Stack Addition:**
+*   **Language:** Python 3.10+ (Local venv)
+*   **Libraries:** OpenCV, MediaPipe, Paho-MQTT, Numpy

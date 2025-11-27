@@ -8,16 +8,17 @@ import sh1106
 # ==========================================
 # 1. CONFIGURATION
 # ==========================================
-WIFI_SSID = "Airel_6000298987"        # <--- Update this!
-WIFI_PASSWORD = "air00022" # <--- Update this!
-MQTT_BROKER_IP = "192.168.1.5"      # <--- Update this!
+WIFI_SSID = "YOUR_WIFI_NAME"        # <--- UPDATE
+WIFI_PASSWORD = "YOUR_WIFI_PASSWORD" # <--- UPDATE
+MQTT_BROKER_IP = "192.168.X.X"      # <--- UPDATE
+
 # ==========================================
 # 2. HARDWARE SETUP
 # ==========================================
 # Wires
 btn_safe = machine.Pin(14, machine.Pin.IN, machine.Pin.PULL_UP)
-btn_fatigue = machine.Pin(15, machine.Pin.IN, machine.Pin.PULL_UP)
-btn_distracted = machine.Pin(16, machine.Pin.IN, machine.Pin.PULL_UP)
+btn_rash = machine.Pin(15, machine.Pin.IN, machine.Pin.PULL_UP) # Was Fatigue
+btn_stress = machine.Pin(16, machine.Pin.IN, machine.Pin.PULL_UP) # Was Distracted
 
 # OLED (SH1106 for 1.3" 128x64)
 i2c = machine.SoftI2C(sda=machine.Pin(0), scl=machine.Pin(1), freq=100000)
@@ -64,7 +65,7 @@ def draw_status(status):
     
     status = status.upper()
     # Center text roughly (approx 8px per char)
-    x_pos = 64 - (len(status) * 4)
+    x_pos = max(0, 64 - (len(status) * 4))
     oled.text(status, x_pos, 35)
     
     oled.show()
@@ -88,9 +89,10 @@ def main():
             now = time.time()
             status = None
             
+            # Button Logic: Active Low (Pull-Up)
             if btn_safe.value() == 0: status = "safe"
-            elif btn_fatigue.value() == 0: status = "fatigue"
-            elif btn_distracted.value() == 0: status = "distracted"
+            elif btn_rash.value() == 0: status = "rash driving"
+            elif btn_stress.value() == 0: status = "stress"
             
             # Trigger only if button pressed & debounce passed
             if status and (now - last_press > 0.5):
