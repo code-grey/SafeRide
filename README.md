@@ -51,12 +51,12 @@ Use the helper script for your OS:
 
 **Windows:**
 ```batch
-scripts\run_cv.bat
+run_cv.bat
 ```
 
 **Mac/Linux:**
 ```bash
-./scripts/run_cv.sh
+./run_cv.sh
 ```
 
 ---
