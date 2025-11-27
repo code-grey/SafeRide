@@ -8,10 +8,9 @@ import sh1106
 # ==========================================
 # 1. CONFIGURATION
 # ==========================================
-WIFI_SSID = "YOUR_WIFI_NAME"        # <--- UPDATE
-WIFI_PASSWORD = "YOUR_WIFI_PASSWORD" # <--- UPDATE
-MQTT_BROKER_IP = "192.168.X.X"      # <--- UPDATE
-
+WIFI_SSID = "Airel_6000298987"        # <--- Update this!
+WIFI_PASSWORD = "air00022" # <--- Update this!
+MQTT_BROKER_IP = "192.168.1.5"      # <--- Update this!
 # ==========================================
 # 2. HARDWARE SETUP
 # ==========================================

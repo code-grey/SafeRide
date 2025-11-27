@@ -128,8 +128,13 @@
 
 <div class="flex h-screen bg-dark-background overflow-hidden relative">
   <Sidebar />
+  <!-- Mobile Overlay -->
   {#if $isMobileMenuOpen}
-    <div class="fixed inset-0 z-20 bg-black opacity-50 md:hidden" on:click={() => isMobileMenuOpen.set(false)}></div>
+    <button
+      class="fixed inset-0 z-20 bg-black opacity-50 md:hidden w-full h-full cursor-default"
+      on:click={() => isMobileMenuOpen.set(false)}
+      aria-label="Close Menu"
+    ></button>
   {/if}
 
   <div class="flex flex-col flex-1 relative z-10 w-full">

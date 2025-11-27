@@ -516,3 +516,12 @@
 1764243415: Client saferide-backend disconnected.
 1764243420: mosquitto version 2.0.22 terminating
 1764243420: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764262355: mosquitto version 2.0.22 starting
+1764262355: Config loaded from /mosquitto/config/mosquitto.conf.
+1764262355: Opening ipv4 listen socket on port 1883.
+1764262355: Opening ipv6 listen socket on port 1883.
+1764262355: mosquitto version 2.0.22 running
+1764262418: New connection from 172.18.0.1:42672 on port 1883.
+1764262418: New client connected from 172.18.0.1:42672 as pico-w-saferide (p2, c1, k0).
+1764262520: New connection from 172.18.0.1:60252 on port 1883.
+1764262520: New client connected from 172.18.0.1:60252 as saferide-backend (p2, c1, k30).
