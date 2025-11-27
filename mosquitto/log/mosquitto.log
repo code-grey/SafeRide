@@ -449,3 +449,35 @@
 1764190503: Client saferide-backend disconnected.
 1764190516: mosquitto version 2.0.22 terminating
 1764190516: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764233687: mosquitto version 2.0.22 starting
+1764233687: Config loaded from /mosquitto/config/mosquitto.conf.
+1764233687: Opening ipv4 listen socket on port 1883.
+1764233687: Opening ipv6 listen socket on port 1883.
+1764233687: mosquitto version 2.0.22 running
+1764233899: New connection from 172.18.0.1:56816 on port 1883.
+1764233899: New client connected from 172.18.0.1:56816 as saferide-backend (p2, c1, k30).
+1764234045: New connection from 172.18.0.1:49376 on port 1883.
+1764234045: New client connected from 172.18.0.1:49376 as pico-w-saferide (p2, c1, k0).
+1764234442: Client pico-w-saferide closed its connection.
+1764235688: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764236618: New connection from 172.18.0.1:40946 on port 1883.
+1764236618: New client connected from 172.18.0.1:40946 as pico-w-saferide (p2, c1, k0).
+1764237040: Client pico-w-saferide closed its connection.
+1764237484: New connection from 172.18.0.1:46002 on port 1883.
+1764237484: New client connected from 172.18.0.1:46002 as pico-w-saferide (p2, c1, k0).
+1764237535: Client pico-w-saferide closed its connection.
+1764237540: New connection from 172.18.0.1:49588 on port 1883.
+1764237540: New client connected from 172.18.0.1:49588 as pico-w-saferide (p2, c1, k0).
+1764237689: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764237767: Client pico-w-saferide closed its connection.
+1764237789: New connection from 172.18.0.1:53682 on port 1883.
+1764237789: New client connected from 172.18.0.1:53682 as pico-w-saferide (p2, c1, k0).
+1764238051: Client pico-w-saferide closed its connection.
+1764238053: New connection from 172.18.0.1:51226 on port 1883.
+1764238053: New client connected from 172.18.0.1:51226 as pico-w-saferide (p2, c1, k0).
+1764238492: Client pico-w-saferide closed its connection.
+1764238494: New connection from 172.18.0.1:34696 on port 1883.
+1764238494: New client connected from 172.18.0.1:34696 as pico-w-saferide (p2, c1, k0).
+1764238629: Client saferide-backend disconnected.
+1764238643: New connection from 172.18.0.1:47302 on port 1883.
+1764238643: New client connected from 172.18.0.1:47302 as saferide-backend (p2, c1, k30).

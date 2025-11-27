@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap');
+
+@layer base {
+  body {
+    @apply bg-light-background text-light-text dark:bg-dark-background dark:text-dark-text;
+    font-family: 'Sora', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-light-background dark:bg-dark-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent-blue/50 rounded-full hover:bg-accent-blue;
+  }
+}
+
+@theme {
+  /* Fonts */
+  --font-sans: 'Sora', sans-serif;
+
+  /* Colors */
+  --color-brand-primary: #007BFF;
+  --color-brand-secondary: #6C757D;
+  
+  --color-light-background: #F8F9FA;
+  --color-light-surface: #FFFFFF;
+  --color-light-text: #212529;
+  --color-light-subtle: #6C757D;
+
+  --color-dark-background: #050505;
+  --color-dark-surface: #0a0a0a;
+  --color-dark-text: #E0E0E0;
+  --color-dark-subtle: #9E9E9E;
+
+  --color-accent-blue: #00f3ff;
+  --color-accent-violet: #bc13fe;
+
+  --color-neon-blue: #00f3ff;
+  --color-neon-purple: #bc13fe;
+  --color-neon-green: #0aff00;
+
+  /* Border Radius */
+  --radius-xl: 1rem;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-glow-blue: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+  --shadow-glow-purple: 0 0 10px rgba(188, 19, 254, 0.5), 0 0 20px rgba(188, 19, 254, 0.3);
+
+  /* Backdrop Blur */
+  --backdrop-blur-xl: 20px;
+
+  /* Animations */
+  --animate-fade-in-down: fade-in-down 0.5s ease-out;
+  --animate-fade-in-up: fade-in-up 0.5s ease-out;
+  --animate-pulse-glow: pulse-glow 2s infinite;
+
+  @keyframes fade-in-down {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(0, 243, 255, 0.8), 0 0 30px rgba(0, 243, 255, 0.5); }
+  }
+}

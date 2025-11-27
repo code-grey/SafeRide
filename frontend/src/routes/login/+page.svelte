@@ -1,75 +1,101 @@
 <script>
-    import { user } from '$lib/auth';
-    import { goto } from '$app/navigation';
+  import { user } from '$lib/auth';
+  import { goto } from '$app/navigation';
+  import ParticleBackground from '$lib/components/ParticleBackground.svelte';
+  import { theme } from '$lib/stores';
 
-    let email = '';
-    let password = '';
-    let error = '';
-
-    async function handleLogin() {
-        try {
-            const res = await fetch('http://localhost:8080/api/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
-            });
-            const data = await res.json();
-            
-            if (res.ok) {
-                user.set({
-                    email: data.email,
-                    name: data.name,
-                    vehicle_id: data.vehicle_id
-                });
-                goto('/commander');
-            } else {
-                error = data.error;
-            }
-        } catch (e) {
-            error = 'Server Error. Is Backend running?';
-        }
-    }
+  function handleSubmit() {
+    user.set({ name: 'John Doe', email: 'john@example.com' });
+    goto('/dashboard');
+  }
 </script>
 
-<div class="auth-container">
-    <h2>Login to SafeRide</h2>
-    {#if error} <p class="error">{error}</p> {/if}
-    
-    <div class="form-group">
-        <label>Email</label>
-        <input type="email" bind:value={email} />
-    </div>
-    
-    <div class="form-group">
-        <label>Password</label>
-        <input type="password" bind:value={password} />
+<div class="min-h-screen bg-dark-background text-white flex items-center justify-center relative overflow-hidden">
+  <!-- Particle Background -->
+  <div class="absolute inset-0 z-0">
+    {#key $theme}
+      <ParticleBackground />
+    {/key}
+  </div>
+
+  <!-- Gradient Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-br from-black/80 via-transparent to-black/80 z-0"></div>
+
+  <!-- Login Form Container -->
+  <div class="relative z-10 w-full max-w-md px-6">
+    <!-- Logo/Brand -->
+    <div class="text-center mb-12">
+      <a href="/" class="inline-block">
+        <h1 class="text-4xl font-bold tracking-tighter text-white mb-2">SAFERIDE</h1>
+      </a>
+      <p class="text-accent-blue font-mono text-xs tracking-[0.2em] uppercase">Access Portal</p>
     </div>
 
-    <button on:click={handleLogin}>Login</button>
-    
-    <p class="switch">Don't have an account? <a href="/signup">Signup</a></p>
+    <!-- Form Card -->
+    <div class="bg-dark-surface/50 backdrop-blur-xl border border-white/10 p-8 relative overflow-hidden">
+      <!-- Decorative Corner -->
+      <div class="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-accent-blue/30"></div>
+      <div class="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-accent-blue/30"></div>
+
+      <h2 class="text-2xl font-light tracking-tight mb-8 text-center">Sign In</h2>
+
+      <form on:submit|preventDefault={handleSubmit} class="space-y-6">
+        <!-- Email Field -->
+        <div>
+          <label for="email" class="block text-gray-400 text-sm font-mono uppercase tracking-wider mb-2">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            class="w-full bg-black/50 text-white border border-white/20 px-4 py-3 leading-tight focus:outline-none focus:border-accent-blue transition-colors duration-300"
+            placeholder="your@email.com"
+          />
+        </div>
+
+        <!-- Password Field -->
+        <div>
+          <label for="password" class="block text-gray-400 text-sm font-mono uppercase tracking-wider mb-2">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            class="w-full bg-black/50 text-white border border-white/20 px-4 py-3 leading-tight focus:outline-none focus:border-accent-blue transition-colors duration-300"
+            placeholder="••••••••"
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full bg-transparent border-2 border-accent-blue text-accent-blue font-medium py-3 px-6 uppercase tracking-widest hover:bg-accent-blue hover:text-black transition-all duration-300 mt-8"
+        >
+          Access System
+        </button>
+      </form>
+
+      <!-- Links -->
+      <div class="mt-8 space-y-3 text-center text-sm">
+        <div>
+          <a href="/forgot-password" class="text-gray-400 hover:text-accent-blue transition-colors font-light">
+            Forgot password?
+          </a>
+        </div>
+        <div class="pt-4 border-t border-white/10">
+          <span class="text-gray-500 font-light">New to SafeRide? </span>
+          <a href="/signup" class="text-accent-blue hover:text-white transition-colors font-medium">
+            Create Account
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Home -->
+    <div class="text-center mt-8">
+      <a href="/" class="text-gray-500 hover:text-white transition-colors text-sm font-light">
+        ← Back to Home
+      </a>
+    </div>
+  </div>
 </div>
-
-<style>
-    .auth-container { 
-        max-width: 400px; 
-        margin: 4rem auto; 
-        padding: 2rem; 
-        background: #1f2937; 
-        border-radius: 1rem; 
-        border: 1px solid #374151;
-        display: flex; 
-        flex-direction: column; 
-        gap: 1.5rem; 
-    }
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-    label { color: #d1d5db; font-size: 0.9rem; }
-    input { padding: 0.75rem; background: #111827; border: 1px solid #374151; color: white; border-radius: 0.5rem; outline: none; }
-    input:focus { border-color: #22c55e; }
-    button { padding: 0.75rem; background: #22c55e; border: none; border-radius: 0.5rem; color: black; font-weight: bold; cursor: pointer; transition: opacity 0.2s; }
-    button:hover { opacity: 0.9; }
-    .error { color: #ef4444; text-align: center; margin: 0; }
-    h2 { text-align: center; margin-top: 0; }
-    .switch { text-align: center; color: #9ca3af; font-size: 0.9rem; }
-    .switch a { color: #22c55e; }
-</style>
