@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # 1. Redis (Cache) - The "Hot" Memory
+  redis:
+    image: redis:alpine
+    container_name: saferide-redis
+    ports:
+      - "6379:6379" # Exposed for local Go app
+    networks:
+      - saferide-net
+
+  # 2. MQTT Broker - The "Nervous System"
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: saferide-mqtt
+    ports:
+      - "1883:1883" # Exposed for Pico W
+      - "9001:9001" # Websocket port
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    networks:
+      - saferide-net
+
+networks:
+  saferide-net:
+    driver: bridge

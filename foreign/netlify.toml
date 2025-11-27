@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+  ignore = "git diff --quiet HEAD^ HEAD backend/"
+
+[build.environment]
+  # Set the CI environment variable to false to avoid treating warnings as errors
+  CI = "false"

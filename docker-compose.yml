@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  # 1. The Brain (Go Backend)
+  backend:
+    build: ./backend
+    container_name: saferide-backend
+    ports:
+      - "8080:8080" # HTTP API for Frontend
+    environment:
+      - REDIS_ADDR=redis:6379
+      - MQTT_BROKER=tcp://mosquitto:1883
+      - SOLANA_RPC=https://api.devnet.solana.com
+      # Add your private key here via .env file for security
+      - SOLANA_PRIVATE_KEY=${SOLANA_PRIVATE_KEY}
+    depends_on:
+      - redis
+      - mosquitto
+    networks:
+      - saferide-net
+
+  # 2. The Memory (Redis Cache)
+  redis:
+    image: redis:alpine
+    container_name: saferide-redis
+    ports:
+      - "6379:6379" # Exposed for local debugging if needed
+    networks:
+      - saferide-net
+
+  # 3. The Nervous System (MQTT Broker)
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: saferide-mqtt
+    ports:
+      - "1883:1883" # MQTT Port (Pico connects here)
+      - "9001:9001" # Websocket Port (Optional)
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    networks:
+      - saferide-net
+
+  # 4. The Face (SvelteKit) - ONLY FOR FINAL DEMO
+  # Uncomment this on Day 4. Until then, run `npm run dev` locally.
+  # frontend:
+  #   build: ./frontend
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - PUBLIC_API_URL=http://localhost:8080
+  #   depends_on:
+  #     - backend
+
+networks:
+  saferide-net:
+    driver: bridge

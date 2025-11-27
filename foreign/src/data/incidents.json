@@ -1,0 +1,5 @@
+[
+  { "id": 1, "type": "Hard Braking", "timestamp": "2023-10-27 14:35:12", "details": "Vehicle Speed: 80km/h -> 20km/h in 2s" },
+  { "id": 2, "type": "Sudden Swerve", "timestamp": "2023-10-27 10:12:45", "details": "Lateral G-Force: 0.8g" },
+  { "id": 3, "type": "Potential Drowsiness", "timestamp": "2023-10-26 23:15:00", "details": "Alertness level dropped to Low for 5 mins" }
+]

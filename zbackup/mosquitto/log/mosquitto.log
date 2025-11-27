@@ -1,0 +1,426 @@
+1764140681: mosquitto version 2.0.22 starting
+1764140681: Config loaded from /mosquitto/config/mosquitto.conf.
+1764140681: Opening ipv4 listen socket on port 1883.
+1764140681: Opening ipv6 listen socket on port 1883.
+1764140681: mosquitto version 2.0.22 running
+1764140786: New connection from 172.18.0.1:35066 on port 1883.
+1764140786: New client connected from 172.18.0.1:35066 as saferide-backend (p2, c1, k30).
+1764140808: New connection from ::1:41670 on port 1883.
+1764140808: New client connected from ::1:41670 as auto-1971320B-0359-D392-8BD4-D7FB31E8D64E (p2, c1, k60).
+1764140808: Client auto-1971320B-0359-D392-8BD4-D7FB31E8D64E disconnected.
+1764141136: New connection from 172.18.0.1:35584 on port 1883.
+1764141136: Client saferide-backend already connected, closing old connection.
+1764141136: New client connected from 172.18.0.1:35584 as saferide-backend (p2, c1, k30).
+1764141136: New connection from 172.18.0.1:35598 on port 1883.
+1764141136: Client saferide-backend already connected, closing old connection.
+1764141136: New client connected from 172.18.0.1:35598 as saferide-backend (p2, c1, k30).
+1764141136: New connection from 172.18.0.1:35602 on port 1883.
+1764141136: Client saferide-backend already connected, closing old connection.
+1764141136: New client connected from 172.18.0.1:35602 as saferide-backend (p2, c1, k30).
+1764141136: Client saferide-backend closed its connection.
+1764141137: New connection from 172.18.0.1:35616 on port 1883.
+1764141137: New client connected from 172.18.0.1:35616 as saferide-backend (p2, c1, k30).
+1764141150: Client saferide-backend closed its connection.
+1764141164: New connection from 172.18.0.1:48492 on port 1883.
+1764141164: New client connected from 172.18.0.1:48492 as saferide-backend (p2, c1, k30).
+1764141186: New connection from ::1:51370 on port 1883.
+1764141186: New client connected from ::1:51370 as auto-36939C73-EB99-565C-569E-5DCB37DE9943 (p2, c1, k60).
+1764141186: Client auto-36939C73-EB99-565C-569E-5DCB37DE9943 disconnected.
+1764141349: New connection from ::1:52600 on port 1883.
+1764141349: New client connected from ::1:52600 as auto-CB4BD27E-1B01-A136-9237-73B34D1CD5C0 (p2, c1, k60).
+1764141349: Client auto-CB4BD27E-1B01-A136-9237-73B34D1CD5C0 disconnected.
+1764141363: New connection from ::1:53050 on port 1883.
+1764141363: New client connected from ::1:53050 as auto-3545F00C-366B-A501-28C2-182530039CDB (p2, c1, k60).
+1764141364: Client auto-3545F00C-366B-A501-28C2-182530039CDB disconnected.
+1764141770: New connection from ::1:44406 on port 1883.
+1764141770: New client connected from ::1:44406 as auto-8D741928-5711-71E0-4581-7270D93223AE (p2, c1, k60).
+1764141770: Client auto-8D741928-5711-71E0-4581-7270D93223AE disconnected.
+1764142302: New connection from ::1:36264 on port 1883.
+1764142302: New client connected from ::1:36264 as auto-3177E49D-EB1F-6EDC-A4D5-183AF44694E4 (p2, c1, k60).
+1764142302: Client auto-3177E49D-EB1F-6EDC-A4D5-183AF44694E4 disconnected.
+1764142310: New connection from ::1:36268 on port 1883.
+1764142310: New client connected from ::1:36268 as auto-4CBA9D82-E192-2165-D1BD-AFA147CE8529 (p2, c1, k60).
+1764142310: Client auto-4CBA9D82-E192-2165-D1BD-AFA147CE8529 disconnected.
+1764142317: New connection from ::1:60718 on port 1883.
+1764142317: New client connected from ::1:60718 as auto-7D050A16-BEB0-4423-12EE-07C272004580 (p2, c1, k60).
+1764142317: Client auto-7D050A16-BEB0-4423-12EE-07C272004580 disconnected.
+1764142354: New connection from ::1:47942 on port 1883.
+1764142354: New client connected from ::1:47942 as auto-CE429081-1925-D476-27E3-C29CAB3C7D35 (p2, c1, k60).
+1764142354: Client auto-CE429081-1925-D476-27E3-C29CAB3C7D35 disconnected.
+1764142364: New connection from ::1:47948 on port 1883.
+1764142364: New client connected from ::1:47948 as auto-D83C107B-DF62-5936-01AA-3641387EDADC (p2, c1, k60).
+1764142364: Client auto-D83C107B-DF62-5936-01AA-3641387EDADC disconnected.
+1764142615: New connection from ::1:45166 on port 1883.
+1764142615: New client connected from ::1:45166 as auto-3AD488E5-9839-B60B-D3EC-68A37104D3C2 (p2, c1, k60).
+1764142615: Client auto-3AD488E5-9839-B60B-D3EC-68A37104D3C2 disconnected.
+1764142681: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764142715: New connection from ::1:46440 on port 1883.
+1764142715: New client connected from ::1:46440 as auto-92A0863A-0F8F-1B80-2FCC-F2E045E58B0F (p2, c1, k60).
+1764142715: Client auto-92A0863A-0F8F-1B80-2FCC-F2E045E58B0F disconnected.
+1764142717: New connection from ::1:46446 on port 1883.
+1764142717: New client connected from ::1:46446 as auto-7E8B3C0C-0E1F-7A61-5783-0CBE28F8726B (p2, c1, k60).
+1764142717: Client auto-7E8B3C0C-0E1F-7A61-5783-0CBE28F8726B disconnected.
+1764142735: New connection from ::1:46360 on port 1883.
+1764142735: New client connected from ::1:46360 as auto-6E0073E7-79A6-89E0-A39E-1B02FB899CFC (p2, c1, k60).
+1764142735: Client auto-6E0073E7-79A6-89E0-A39E-1B02FB899CFC disconnected.
+1764142787: New connection from ::1:36204 on port 1883.
+1764142787: New client connected from ::1:36204 as auto-8DC70DE3-B339-A9EC-FB6A-60777B2D6F24 (p2, c1, k60).
+1764142787: Client auto-8DC70DE3-B339-A9EC-FB6A-60777B2D6F24 disconnected.
+1764142790: New connection from ::1:47972 on port 1883.
+1764142790: New client connected from ::1:47972 as auto-CF49768C-FBC2-5D59-43A5-7CAEC4CC581A (p2, c1, k60).
+1764142790: Client auto-CF49768C-FBC2-5D59-43A5-7CAEC4CC581A disconnected.
+1764142802: New connection from ::1:55010 on port 1883.
+1764142802: New client connected from ::1:55010 as auto-322A6156-2F4D-6795-EB0C-BB44E1DBE6D0 (p2, c1, k60).
+1764142802: Client auto-322A6156-2F4D-6795-EB0C-BB44E1DBE6D0 disconnected.
+1764142805: New connection from ::1:55014 on port 1883.
+1764142805: New client connected from ::1:55014 as auto-C3B2A33E-1A22-C749-B2F2-E3C3ACC5557B (p2, c1, k60).
+1764142805: Client auto-C3B2A33E-1A22-C749-B2F2-E3C3ACC5557B disconnected.
+1764144682: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764146683: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764148684: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764150685: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764152686: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764154687: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764155599: New connection from ::1:53146 on port 1883.
+1764155599: New client connected from ::1:53146 as auto-0C44A3AE-819C-4FA2-4BE1-23B1EF1CA345 (p2, c1, k60).
+1764155599: Client auto-0C44A3AE-819C-4FA2-4BE1-23B1EF1CA345 disconnected.
+1764155601: New connection from ::1:53160 on port 1883.
+1764155601: New client connected from ::1:53160 as auto-B7C3A581-EF5F-B2AC-F15B-843CD5A2F6A0 (p2, c1, k60).
+1764155601: Client auto-B7C3A581-EF5F-B2AC-F15B-843CD5A2F6A0 disconnected.
+1764155660: New connection from ::1:42006 on port 1883.
+1764155660: New client connected from ::1:42006 as auto-75F9B274-B54C-292B-4D79-FBB2F19622E7 (p2, c1, k60).
+1764155660: Client auto-75F9B274-B54C-292B-4D79-FBB2F19622E7 disconnected.
+1764155670: New connection from ::1:58918 on port 1883.
+1764155670: New client connected from ::1:58918 as auto-F9AB6570-0D0F-154E-4A69-96EC85938103 (p2, c1, k60).
+1764155670: Client auto-F9AB6570-0D0F-154E-4A69-96EC85938103 disconnected.
+1764155670: New connection from ::1:58926 on port 1883.
+1764155670: New client connected from ::1:58926 as auto-D1EF3049-53F3-698A-F02B-E46CD93FDB54 (p2, c1, k60).
+1764155670: Client auto-D1EF3049-53F3-698A-F02B-E46CD93FDB54 disconnected.
+1764155675: New connection from ::1:58934 on port 1883.
+1764155675: New client connected from ::1:58934 as auto-63B3E26A-0702-4387-6103-AFE6DAF615F2 (p2, c1, k60).
+1764155675: Client auto-63B3E26A-0702-4387-6103-AFE6DAF615F2 disconnected.
+1764155718: New connection from ::1:58322 on port 1883.
+1764155718: New client connected from ::1:58322 as auto-57DFE4C7-2688-3778-BBED-045B2AD5635E (p2, c1, k60).
+1764155718: Client auto-57DFE4C7-2688-3778-BBED-045B2AD5635E disconnected.
+1764155721: New connection from ::1:51390 on port 1883.
+1764155721: New client connected from ::1:51390 as auto-EC7153D4-B386-F6F9-B8FB-DBE2F87C6CE3 (p2, c1, k60).
+1764155721: Client auto-EC7153D4-B386-F6F9-B8FB-DBE2F87C6CE3 disconnected.
+1764155781: New connection from ::1:42188 on port 1883.
+1764155781: New client connected from ::1:42188 as auto-5461035A-A1FC-1FCC-9FA2-4144D11640F1 (p2, c1, k60).
+1764155781: Client auto-5461035A-A1FC-1FCC-9FA2-4144D11640F1 disconnected.
+1764155783: New connection from ::1:42190 on port 1883.
+1764155783: New client connected from ::1:42190 as auto-164A4832-7511-6C0B-CF98-617489C7F060 (p2, c1, k60).
+1764155783: Client auto-164A4832-7511-6C0B-CF98-617489C7F060 disconnected.
+1764155785: New connection from ::1:43860 on port 1883.
+1764155785: New client connected from ::1:43860 as auto-BDB1D724-EEC3-37BD-7586-638695292518 (p2, c1, k60).
+1764155785: Client auto-BDB1D724-EEC3-37BD-7586-638695292518 disconnected.
+1764156686: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764158688: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764160688: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764162689: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764164690: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764166694: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764167333: New connection from ::1:37504 on port 1883.
+1764167333: New client connected from ::1:37504 as auto-778FA56D-107F-7BF9-D609-B009D7F3E1A5 (p2, c1, k60).
+1764167333: Client auto-778FA56D-107F-7BF9-D609-B009D7F3E1A5 disconnected.
+1764167338: New connection from ::1:43106 on port 1883.
+1764167338: New client connected from ::1:43106 as auto-49F6E5E8-F7C3-29CA-A414-2A3328432541 (p2, c1, k60).
+1764167338: Client auto-49F6E5E8-F7C3-29CA-A414-2A3328432541 disconnected.
+1764167341: New connection from ::1:43112 on port 1883.
+1764167341: New client connected from ::1:43112 as auto-1311AEF7-C473-9024-9E8B-6ACABAABDC15 (p2, c1, k60).
+1764167341: Client auto-1311AEF7-C473-9024-9E8B-6ACABAABDC15 disconnected.
+1764167345: New connection from ::1:43116 on port 1883.
+1764167345: New client connected from ::1:43116 as auto-1D53A0DB-B6E5-D1F1-C284-B75BF240F9A7 (p2, c1, k60).
+1764167345: Client auto-1D53A0DB-B6E5-D1F1-C284-B75BF240F9A7 disconnected.
+1764168691: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764169569: Client saferide-backend closed its connection.
+1764169586: New connection from 172.18.0.1:34808 on port 1883.
+1764169586: New client connected from 172.18.0.1:34808 as saferide-backend (p2, c1, k30).
+1764169909: New connection from ::1:32938 on port 1883.
+1764169909: New client connected from ::1:32938 as auto-9A570DDB-5256-510C-DCD1-8848431CE262 (p2, c1, k60).
+1764169909: Client auto-9A570DDB-5256-510C-DCD1-8848431CE262 disconnected.
+1764170017: New connection from ::1:57116 on port 1883.
+1764170017: New client connected from ::1:57116 as auto-77341621-F8D6-F09B-5362-9A9E3643894E (p2, c1, k60).
+1764170017: Client auto-77341621-F8D6-F09B-5362-9A9E3643894E disconnected.
+1764170689: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764172690: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764174688: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764175223: New connection from ::1:58258 on port 1883.
+1764175223: New client connected from ::1:58258 as auto-AE499FF3-EC61-DA41-0084-799E881FC763 (p2, c1, k60).
+1764175223: Client auto-AE499FF3-EC61-DA41-0084-799E881FC763 disconnected.
+1764175228: New connection from ::1:58264 on port 1883.
+1764175228: New client connected from ::1:58264 as auto-1876CDDE-7BAC-B80B-9604-F833E9DE2081 (p2, c1, k60).
+1764175228: Client auto-1876CDDE-7BAC-B80B-9604-F833E9DE2081 disconnected.
+1764175276: Client saferide-backend closed its connection.
+1764175286: New connection from 172.18.0.1:54742 on port 1883.
+1764175286: New client connected from 172.18.0.1:54742 as saferide-backend (p2, c1, k30).
+1764175292: New connection from ::1:47632 on port 1883.
+1764175292: New client connected from ::1:47632 as auto-A6B6F946-E249-BCA8-2002-232FF3B479FD (p2, c1, k60).
+1764175292: Client auto-A6B6F946-E249-BCA8-2002-232FF3B479FD disconnected.
+1764175354: Client saferide-backend closed its connection.
+1764175360: New connection from 172.18.0.1:48130 on port 1883.
+1764175360: New client connected from 172.18.0.1:48130 as saferide-backend (p2, c1, k30).
+1764175366: New connection from ::1:40180 on port 1883.
+1764175366: New client connected from ::1:40180 as auto-AFE1948E-5B74-33B3-1315-BFA6F607E5C5 (p2, c1, k60).
+1764175366: Client auto-AFE1948E-5B74-33B3-1315-BFA6F607E5C5 disconnected.
+1764175366: Client saferide-backend closed its connection.
+1764175586: New connection from 172.18.0.1:34742 on port 1883.
+1764175586: New client connected from 172.18.0.1:34742 as saferide-backend (p2, c1, k30).
+1764175592: New connection from ::1:43766 on port 1883.
+1764175592: New client connected from ::1:43766 as auto-B8E3E9AC-DC29-8B0C-94D9-D8D1588B70FB (p2, c1, k60).
+1764175592: Client auto-B8E3E9AC-DC29-8B0C-94D9-D8D1588B70FB disconnected.
+1764175945: Client saferide-backend closed its connection.
+1764175954: New connection from 172.18.0.1:44264 on port 1883.
+1764175954: New client connected from 172.18.0.1:44264 as saferide-backend (p2, c1, k30).
+1764176059: New connection from ::1:57788 on port 1883.
+1764176059: New client connected from ::1:57788 as auto-8C41A0D1-11D8-70BF-2666-BE350AB7BBBA (p2, c1, k60).
+1764176059: Client auto-8C41A0D1-11D8-70BF-2666-BE350AB7BBBA disconnected.
+1764176246: Client saferide-backend closed its connection.
+1764176254: New connection from 172.18.0.1:57904 on port 1883.
+1764176254: New client connected from 172.18.0.1:57904 as saferide-backend (p2, c1, k30).
+1764176261: New connection from ::1:42692 on port 1883.
+1764176261: New client connected from ::1:42692 as auto-0EFA1E2D-DDA1-6CB5-A29A-380DD73AA23E (p2, c1, k60).
+1764176261: Client auto-0EFA1E2D-DDA1-6CB5-A29A-380DD73AA23E disconnected.
+1764176480: Client saferide-backend closed its connection.
+1764176490: New connection from 172.18.0.1:36124 on port 1883.
+1764176490: New client connected from 172.18.0.1:36124 as saferide-backend (p2, c1, k30).
+1764176497: New connection from ::1:50200 on port 1883.
+1764176497: New client connected from ::1:50200 as auto-CC3B6874-EEB5-61B3-D376-14720B8C9ED8 (p2, c1, k60).
+1764176497: Client auto-CC3B6874-EEB5-61B3-D376-14720B8C9ED8 disconnected.
+1764176497: Client saferide-backend closed its connection.
+1764176561: New connection from 172.18.0.1:37068 on port 1883.
+1764176561: New client connected from 172.18.0.1:37068 as saferide-backend (p2, c1, k30).
+1764176567: New connection from ::1:37702 on port 1883.
+1764176567: New client connected from ::1:37702 as auto-7E1EFA64-1A71-F14B-6464-12AF94678075 (p2, c1, k60).
+1764176567: Client auto-7E1EFA64-1A71-F14B-6464-12AF94678075 disconnected.
+1764176689: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764176702: Client saferide-backend closed its connection.
+1764176708: New connection from 172.18.0.1:38392 on port 1883.
+1764176708: New client connected from 172.18.0.1:38392 as saferide-backend (p2, c1, k30).
+1764176898: Client saferide-backend closed its connection.
+1764176904: New connection from 172.18.0.1:36182 on port 1883.
+1764176904: New client connected from 172.18.0.1:36182 as saferide-backend (p2, c1, k30).
+1764176911: New connection from ::1:44566 on port 1883.
+1764176911: New client connected from ::1:44566 as auto-CD563385-3569-2405-2BD3-51CA1EA6CE1B (p2, c1, k60).
+1764176911: Client auto-CD563385-3569-2405-2BD3-51CA1EA6CE1B disconnected.
+1764177804: Client saferide-backend closed its connection.
+1764177810: New connection from 172.18.0.1:57720 on port 1883.
+1764177810: New client connected from 172.18.0.1:57720 as saferide-backend (p2, c1, k30).
+1764177895: Client saferide-backend disconnected.
+1764178438: New connection from 172.18.0.1:56474 on port 1883.
+1764178438: New client connected from 172.18.0.1:56474 as saferide-backend (p2, c1, k30).
+1764178487: New connection from ::1:39684 on port 1883.
+1764178487: New client connected from ::1:39684 as auto-5B8BA6BD-EC90-C2C1-6D81-EE520C33AA54 (p2, c1, k60).
+1764178487: Client auto-5B8BA6BD-EC90-C2C1-6D81-EE520C33AA54 disconnected.
+1764178535: New connection from ::1:36834 on port 1883.
+1764178535: New client connected from ::1:36834 as auto-92957065-23C1-86F0-8204-A27949FAE76E (p2, c1, k60).
+1764178535: Client auto-92957065-23C1-86F0-8204-A27949FAE76E disconnected.
+1764178546: New connection from ::1:56790 on port 1883.
+1764178546: New client connected from ::1:56790 as auto-4F84F420-3419-3AC7-17BF-17893D7E1A9E (p2, c1, k60).
+1764178546: Client auto-4F84F420-3419-3AC7-17BF-17893D7E1A9E disconnected.
+1764178664: New connection from ::1:35716 on port 1883.
+1764178664: New client connected from ::1:35716 as auto-FA59FB9B-79A4-C5E9-87D6-176A2D48310E (p2, c1, k60).
+1764178664: Client auto-FA59FB9B-79A4-C5E9-87D6-176A2D48310E disconnected.
+1764178690: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764178704: New connection from ::1:39350 on port 1883.
+1764178704: New client connected from ::1:39350 as auto-58B8A27C-D48F-7C75-1B2C-B72EA4FCDEBE (p2, c1, k60).
+1764178704: Client auto-58B8A27C-D48F-7C75-1B2C-B72EA4FCDEBE disconnected.
+1764178742: New connection from ::1:37692 on port 1883.
+1764178742: New client connected from ::1:37692 as auto-AF6C4AE0-A939-D7DE-C964-C6B4B8458D9E (p2, c1, k60).
+1764178742: Client auto-AF6C4AE0-A939-D7DE-C964-C6B4B8458D9E disconnected.
+1764179403: New connection from 172.18.0.1:45150 on port 1883.
+1764179403: Client saferide-backend already connected, closing old connection.
+1764179403: New client connected from 172.18.0.1:45150 as saferide-backend (p2, c1, k30).
+1764179403: Client saferide-backend closed its connection.
+1764179403: New connection from 172.18.0.1:45156 on port 1883.
+1764179403: New client connected from 172.18.0.1:45156 as saferide-backend (p2, c1, k30).
+1764179439: New connection from ::1:51838 on port 1883.
+1764179439: New client connected from ::1:51838 as auto-4407B442-9FA2-7075-848D-9FEF8907D838 (p2, c1, k60).
+1764179439: Client auto-4407B442-9FA2-7075-848D-9FEF8907D838 disconnected.
+1764179465: New connection from ::1:52626 on port 1883.
+1764179465: New client connected from ::1:52626 as auto-A386C994-D3B2-B9AB-AAEB-46109A3C3758 (p2, c1, k60).
+1764179465: Client auto-A386C994-D3B2-B9AB-AAEB-46109A3C3758 disconnected.
+1764179506: New connection from 172.18.0.1:39710 on port 1883.
+1764179506: Client saferide-backend already connected, closing old connection.
+1764179506: New client connected from 172.18.0.1:39710 as saferide-backend (p2, c1, k30).
+1764179506: New connection from 172.18.0.1:39718 on port 1883.
+1764179506: Client saferide-backend already connected, closing old connection.
+1764179506: New client connected from 172.18.0.1:39718 as saferide-backend (p2, c1, k30).
+1764179506: New connection from 172.18.0.1:39726 on port 1883.
+1764179506: Client saferide-backend already connected, closing old connection.
+1764179506: New client connected from 172.18.0.1:39726 as saferide-backend (p2, c1, k30).
+1764179506: Client saferide-backend closed its connection.
+1764179507: New connection from 172.18.0.1:39742 on port 1883.
+1764179507: New client connected from 172.18.0.1:39742 as saferide-backend (p2, c1, k30).
+1764179522: New connection from 172.18.0.1:54796 on port 1883.
+1764179522: Client saferide-backend already connected, closing old connection.
+1764179522: New client connected from 172.18.0.1:54796 as saferide-backend (p2, c1, k30).
+1764179522: New connection from 172.18.0.1:54800 on port 1883.
+1764179522: Client saferide-backend already connected, closing old connection.
+1764179522: New client connected from 172.18.0.1:54800 as saferide-backend (p2, c1, k30).
+1764179522: New connection from 172.18.0.1:54814 on port 1883.
+1764179522: Client saferide-backend already connected, closing old connection.
+1764179522: New client connected from 172.18.0.1:54814 as saferide-backend (p2, c1, k30).
+1764179522: Client saferide-backend closed its connection.
+1764179523: New connection from 172.18.0.1:54820 on port 1883.
+1764179523: New client connected from 172.18.0.1:54820 as saferide-backend (p2, c1, k30).
+1764179526: Client saferide-backend closed its connection.
+1764179593: New connection from 172.18.0.1:59622 on port 1883.
+1764179593: New client connected from 172.18.0.1:59622 as saferide-backend (p2, c1, k30).
+1764179674: New connection from ::1:53182 on port 1883.
+1764179674: New client connected from ::1:53182 as auto-82B100BE-6F45-9358-32D9-E069C17B13A1 (p2, c1, k60).
+1764179674: Client auto-82B100BE-6F45-9358-32D9-E069C17B13A1 disconnected.
+1764179695: Client saferide-backend closed its connection.
+1764179701: New connection from 172.18.0.1:57904 on port 1883.
+1764179701: New client connected from 172.18.0.1:57904 as saferide-backend (p2, c1, k30).
+1764179703: Client saferide-backend disconnected.
+1764179808: New connection from 172.18.0.1:60034 on port 1883.
+1764179808: New client connected from 172.18.0.1:60034 as saferide-backend (p2, c1, k30).
+1764179848: Client saferide-backend closed its connection.
+1764179853: New connection from 172.18.0.1:35090 on port 1883.
+1764179853: New client connected from 172.18.0.1:35090 as saferide-backend (p2, c1, k30).
+1764179864: New connection from 172.18.0.1:53298 on port 1883.
+1764179864: Client saferide-backend already connected, closing old connection.
+1764179864: New client connected from 172.18.0.1:53298 as saferide-backend (p2, c1, k30).
+1764179864: Client saferide-backend closed its connection.
+1764179864: New connection from 172.18.0.1:53312 on port 1883.
+1764179864: New client connected from 172.18.0.1:53312 as saferide-backend (p2, c1, k30).
+1764179877: Client saferide-backend closed its connection.
+1764179885: New connection from 172.18.0.1:59682 on port 1883.
+1764179885: New client connected from 172.18.0.1:59682 as saferide-backend (p2, c1, k30).
+1764179987: New connection from ::1:55888 on port 1883.
+1764179987: New client connected from ::1:55888 as auto-A93912A1-F896-6D98-B985-42C4CDEEB77A (p2, c1, k60).
+1764179987: Client auto-A93912A1-F896-6D98-B985-42C4CDEEB77A disconnected.
+1764179995: New connection from ::1:43070 on port 1883.
+1764179995: New client connected from ::1:43070 as auto-285A4062-96FE-D2D8-CD2F-16E5C879B266 (p2, c1, k60).
+1764179995: Client auto-285A4062-96FE-D2D8-CD2F-16E5C879B266 disconnected.
+1764180015: New connection from ::1:34964 on port 1883.
+1764180015: New client connected from ::1:34964 as auto-2E81BC5F-BD26-C208-43C6-E3A9791EBCA8 (p2, c1, k60).
+1764180015: Client auto-2E81BC5F-BD26-C208-43C6-E3A9791EBCA8 disconnected.
+1764180021: New connection from ::1:49382 on port 1883.
+1764180021: New client connected from ::1:49382 as auto-438EF5D6-E80C-4A72-1A93-D0F4B8654395 (p2, c1, k60).
+1764180021: Client auto-438EF5D6-E80C-4A72-1A93-D0F4B8654395 disconnected.
+1764180101: Client saferide-backend closed its connection.
+1764180108: New connection from 172.18.0.1:60064 on port 1883.
+1764180108: New client connected from 172.18.0.1:60064 as saferide-backend (p2, c1, k30).
+1764180149: Client saferide-backend disconnected.
+1764180525: New connection from 172.18.0.1:43806 on port 1883.
+1764180525: New client connected from 172.18.0.1:43806 as saferide-backend (p2, c1, k30).
+1764180658: New connection from ::1:58890 on port 1883.
+1764180658: New client connected from ::1:58890 as auto-6D115046-62C4-6E55-90F4-27ED91BDD0D7 (p2, c1, k60).
+1764180658: Client auto-6D115046-62C4-6E55-90F4-27ED91BDD0D7 disconnected.
+1764180687: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764181998: Client saferide-backend closed its connection.
+1764182004: New connection from 172.18.0.1:45332 on port 1883.
+1764182004: New client connected from 172.18.0.1:45332 as saferide-backend (p2, c1, k30).
+1764182025: Client saferide-backend closed its connection.
+1764182031: New connection from 172.18.0.1:45490 on port 1883.
+1764182031: New client connected from 172.18.0.1:45490 as saferide-backend (p2, c1, k30).
+1764182219: New connection from ::1:48468 on port 1883.
+1764182219: New client connected from ::1:48468 as auto-DD7D4BC6-BD4C-045F-9D6E-488FC20650F4 (p2, c1, k60).
+1764182219: Client auto-DD7D4BC6-BD4C-045F-9D6E-488FC20650F4 disconnected.
+1764182220: New connection from ::1:48470 on port 1883.
+1764182220: New client connected from ::1:48470 as auto-EEE65E7A-7126-DA51-CD7F-01BCDDA300E5 (p2, c1, k60).
+1764182220: Client auto-EEE65E7A-7126-DA51-CD7F-01BCDDA300E5 disconnected.
+1764182221: New connection from ::1:48484 on port 1883.
+1764182221: New client connected from ::1:48484 as auto-0DCABA1A-0434-F735-AF32-32812F8A1506 (p2, c1, k60).
+1764182221: Client auto-0DCABA1A-0434-F735-AF32-32812F8A1506 disconnected.
+1764182224: New connection from ::1:48490 on port 1883.
+1764182224: New client connected from ::1:48490 as auto-372DA5AC-126D-D38E-3C87-404C21FD7303 (p2, c1, k60).
+1764182224: Client auto-372DA5AC-126D-D38E-3C87-404C21FD7303 disconnected.
+1764182231: New connection from ::1:42110 on port 1883.
+1764182231: New client connected from ::1:42110 as auto-9503AB28-67A7-B883-EC94-0F35AEC9BC7B (p2, c1, k60).
+1764182231: Client auto-9503AB28-67A7-B883-EC94-0F35AEC9BC7B disconnected.
+1764182320: Client saferide-backend disconnected.
+1764182328: New connection from 172.18.0.1:50012 on port 1883.
+1764182328: New client connected from 172.18.0.1:50012 as saferide-backend (p2, c1, k30).
+1764182360: New connection from ::1:42784 on port 1883.
+1764182360: New client connected from ::1:42784 as auto-8B62B91A-32C5-34E0-A3E1-5FC2EAA13D72 (p2, c1, k60).
+1764182360: Client auto-8B62B91A-32C5-34E0-A3E1-5FC2EAA13D72 disconnected.
+1764182377: New connection from ::1:35612 on port 1883.
+1764182377: New client connected from ::1:35612 as auto-7EB21FCE-10A9-C8C0-E785-2F2C707B914A (p2, c1, k60).
+1764182377: Client auto-7EB21FCE-10A9-C8C0-E785-2F2C707B914A disconnected.
+1764182392: New connection from ::1:36472 on port 1883.
+1764182392: New client connected from ::1:36472 as auto-69DB8F85-008E-4E38-086B-4027124D4084 (p2, c1, k60).
+1764182392: Client auto-69DB8F85-008E-4E38-086B-4027124D4084 disconnected.
+1764182422: New connection from ::1:60438 on port 1883.
+1764182422: New client connected from ::1:60438 as auto-E0A53C04-7576-85D3-F781-120540FF7EF4 (p2, c1, k60).
+1764182422: Client auto-E0A53C04-7576-85D3-F781-120540FF7EF4 disconnected.
+1764182428: New connection from ::1:33924 on port 1883.
+1764182428: New client connected from ::1:33924 as auto-7268A4A7-F2CB-459B-11F4-CDFB495032D1 (p2, c1, k60).
+1764182428: Client auto-7268A4A7-F2CB-459B-11F4-CDFB495032D1 disconnected.
+1764182435: New connection from ::1:33936 on port 1883.
+1764182435: New client connected from ::1:33936 as auto-08B020EC-F425-B3D4-807B-4A3F2B81B628 (p2, c1, k60).
+1764182435: Client auto-08B020EC-F425-B3D4-807B-4A3F2B81B628 disconnected.
+1764182448: Client saferide-backend disconnected.
+1764182688: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764183614: New connection from 172.18.0.1:40698 on port 1883.
+1764183614: New client connected from 172.18.0.1:40698 as saferide-backend (p2, c1, k30).
+1764184037: Client saferide-backend disconnected.
+1764184685: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764184727: New connection from 172.18.0.1:36428 on port 1883.
+1764184727: New client connected from 172.18.0.1:36428 as saferide-backend (p2, c1, k30).
+1764184778: New connection from ::1:45950 on port 1883.
+1764184778: New client connected from ::1:45950 as auto-D28AADCB-0EC0-CEC0-794F-382FA064566B (p2, c1, k60).
+1764184778: Client auto-D28AADCB-0EC0-CEC0-794F-382FA064566B disconnected.
+1764184779: New connection from ::1:45958 on port 1883.
+1764184779: New client connected from ::1:45958 as auto-6087134E-D0DA-BF17-2651-98A11C9551A4 (p2, c1, k60).
+1764184779: Client auto-6087134E-D0DA-BF17-2651-98A11C9551A4 disconnected.
+1764184780: New connection from ::1:45968 on port 1883.
+1764184780: New client connected from ::1:45968 as auto-7E6B4627-095C-7FA3-CE94-704E5EA2A3AE (p2, c1, k60).
+1764184780: Client auto-7E6B4627-095C-7FA3-CE94-704E5EA2A3AE disconnected.
+1764184780: New connection from ::1:58594 on port 1883.
+1764184780: New client connected from ::1:58594 as auto-8B6D2BBF-C520-DCAE-34E0-1CC85862FD33 (p2, c1, k60).
+1764184780: Client auto-8B6D2BBF-C520-DCAE-34E0-1CC85862FD33 disconnected.
+1764184783: New connection from ::1:58600 on port 1883.
+1764184783: New client connected from ::1:58600 as auto-185A6C55-8EEF-3737-AD68-72B654F27FB5 (p2, c1, k60).
+1764184783: Client auto-185A6C55-8EEF-3737-AD68-72B654F27FB5 disconnected.
+1764185101: Client saferide-backend disconnected.
+1764185117: New connection from 172.18.0.1:47574 on port 1883.
+1764185117: New client connected from 172.18.0.1:47574 as saferide-backend (p2, c1, k30).
+1764185128: New connection from ::1:41018 on port 1883.
+1764185128: New client connected from ::1:41018 as auto-1EC7A1D3-B22E-FE9D-EA0E-F6B27B72CF2B (p2, c1, k60).
+1764185128: Client auto-1EC7A1D3-B22E-FE9D-EA0E-F6B27B72CF2B disconnected.
+1764185135: New connection from ::1:49830 on port 1883.
+1764185135: New client connected from ::1:49830 as auto-1C119E77-FC73-C217-1FF2-7F1959719752 (p2, c1, k60).
+1764185135: Client auto-1C119E77-FC73-C217-1FF2-7F1959719752 disconnected.
+1764185140: New connection from ::1:49832 on port 1883.
+1764185140: New client connected from ::1:49832 as auto-EBC4E0BB-460B-532B-8DF0-89345CC23AD5 (p2, c1, k60).
+1764185140: Client auto-EBC4E0BB-460B-532B-8DF0-89345CC23AD5 disconnected.
+1764185147: New connection from ::1:55096 on port 1883.
+1764185147: New client connected from ::1:55096 as auto-8A6CD4EA-7DD6-7775-0B74-98C55D67D72C (p2, c1, k60).
+1764185147: Client auto-8A6CD4EA-7DD6-7775-0B74-98C55D67D72C disconnected.
+1764185149: New connection from ::1:55112 on port 1883.
+1764185149: New client connected from ::1:55112 as auto-FC43D399-DF44-B4E9-DD1F-92324D873445 (p2, c1, k60).
+1764185149: Client auto-FC43D399-DF44-B4E9-DD1F-92324D873445 disconnected.
+1764185151: New connection from ::1:55128 on port 1883.
+1764185151: New client connected from ::1:55128 as auto-30699198-061D-61E2-E6CF-C16E6953C72C (p2, c1, k60).
+1764185151: Client auto-30699198-061D-61E2-E6CF-C16E6953C72C disconnected.
+1764185153: New connection from ::1:55138 on port 1883.
+1764185153: New client connected from ::1:55138 as auto-14CED3CE-40B8-D6C1-924D-25D6AE8D4FEC (p2, c1, k60).
+1764185153: Client auto-14CED3CE-40B8-D6C1-924D-25D6AE8D4FEC disconnected.
+1764185323: New connection from ::1:45520 on port 1883.
+1764185323: New client connected from ::1:45520 as auto-4AF8A34D-7F9B-CFDB-F172-C9B86E7C1630 (p2, c1, k60).
+1764185323: Client auto-4AF8A34D-7F9B-CFDB-F172-C9B86E7C1630 disconnected.
+1764185703: Client saferide-backend disconnected.
+1764185711: New connection from 172.18.0.1:39552 on port 1883.
+1764185711: New client connected from 172.18.0.1:39552 as saferide-backend (p2, c1, k30).
+1764185719: New connection from ::1:34166 on port 1883.
+1764185719: New client connected from ::1:34166 as auto-601095C2-74DB-CC25-58C0-19113F03FE8B (p2, c1, k60).
+1764185719: Client auto-601095C2-74DB-CC25-58C0-19113F03FE8B disconnected.
+1764185797: New connection from ::1:57312 on port 1883.
+1764185797: New client connected from ::1:57312 as auto-6EE35D89-F892-87AE-1955-D34F3DE86945 (p2, c1, k60).
+1764185797: Client auto-6EE35D89-F892-87AE-1955-D34F3DE86945 disconnected.
+1764185937: New connection from ::1:35882 on port 1883.
+1764185937: New client connected from ::1:35882 as auto-99C62A45-0EC8-8264-0938-8BBDCFC2854F (p2, c1, k60).
+1764185937: Client auto-99C62A45-0EC8-8264-0938-8BBDCFC2854F disconnected.
+1764185955: New connection from ::1:41332 on port 1883.
+1764185955: New client connected from ::1:41332 as auto-DD07C9AD-44B9-4C32-1FE7-1D93A6E103CF (p2, c1, k60).
+1764185955: Client auto-DD07C9AD-44B9-4C32-1FE7-1D93A6E103CF disconnected.
+1764185973: New connection from ::1:58624 on port 1883.
+1764185973: New client connected from ::1:58624 as auto-6CF62833-1EB8-CEF9-C331-EAC703292F15 (p2, c1, k60).
+1764185973: Client auto-6CF62833-1EB8-CEF9-C331-EAC703292F15 disconnected.
+1764185978: New connection from ::1:58630 on port 1883.
+1764185978: New client connected from ::1:58630 as auto-A6E6FFB3-A10C-7750-3789-E20B63FE301F (p2, c1, k60).
+1764185978: Client auto-A6E6FFB3-A10C-7750-3789-E20B63FE301F disconnected.
+1764186686: Saving in-memory database to /mosquitto/data//mosquitto.db.

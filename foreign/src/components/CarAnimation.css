@@ -1,0 +1,47 @@
+.car-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.car {
+  position: absolute;
+  left: -20%;
+  /* Start off-screen */
+  animation: drive linear infinite;
+  filter: drop-shadow(0 0 10px #00f3ff);
+  /* Neon glow */
+}
+
+/* Make the SVG itself responsive */
+.car svg {
+  width: 100%;
+  height: auto;
+  fill: #00f3ff;
+  /* Neon color */
+}
+
+@keyframes drive {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(120vw);
+    /* Drive across the screen */
+    opacity: 0;
+  }
+}
