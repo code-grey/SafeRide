@@ -60,15 +60,17 @@ Once the build completes:
 ### Step 2: Launch the AI Agent 🦅
 The Computer Vision agent runs directly on your machine to access the webcam.
 
-**Windows:**
-```batch
-run_cv.bat
-```
+**First Time Setup:**
+If you encounter any issues with the auto-setup, or if you are on a new machine, run the setup script first to install `uv` and dependencies.
 
-**Mac/Linux:**
-```bash
-./run_cv.sh
-```
+*   **Windows:** `setup_cv.bat`
+*   **Mac/Linux:** `./setup_cv.sh` (Make sure to run from the project root)
+
+**Run the Agent:**
+*   **Windows:** `run_cv.bat`
+*   **Mac/Linux:** `./run_cv.sh`
+
+> **⚠️ MacOS Users:** You must grant **Camera Permissions** to your Terminal/IDE (VS Code, iTerm, etc.) in `System Settings > Privacy & Security > Camera` for the agent to work.
 
 *Ensure your webcam is active. The agent will start publishing "Fatigue" or "Safe" signals to the dashboard based on your face.*
 
