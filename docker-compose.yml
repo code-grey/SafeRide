@@ -42,16 +42,21 @@ services:
     networks:
       - saferide-net
 
-  # 4. The Face (SvelteKit) - ONLY FOR FINAL DEMO
-  # Uncomment this on Day 4. Until then, run `npm run dev` locally.
-  # frontend:
-  #   build: ./frontend
-  #   ports:
-  #     - "3000:3000"
-  #   environment:
-  #     - PUBLIC_API_URL=http://localhost:8080
-  #   depends_on:
-  #     - backend
+  # 4. The Face (SvelteKit)
+  frontend:
+    build: ./frontend
+    container_name: saferide-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      # In docker-compose, frontend calls backend via browser, so localhost is correct for client-side calls?
+      # NO. SvelteKit Server-Side Load calls might need internal DNS (backend:8080).
+      # But Client-Side calls need localhost:8080 (from user's browser).
+      # Usually SvelteKit needs both or special handling. 
+      # For this simple demo, let's assume client-side fetching mainly.
+      - PUBLIC_API_URL=http://localhost:8080
+    depends_on:
+      - backend
 
 networks:
   saferide-net:

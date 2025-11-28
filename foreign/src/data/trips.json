@@ -1,6 +1,0 @@
-[
-  { "id": "TRIP-001", "startTime": "2023-10-27 08:00", "endTime": "2023-10-27 08:45", "distance": "15.2 km", "safetyScore": 98, "incidents": 0, "isVerified": true, "hash": "0xabc...123" },
-  { "id": "TRIP-002", "startTime": "2023-10-27 09:15", "endTime": "2023-10-27 10:05", "distance": "22.5 km", "safetyScore": 82, "incidents": 1, "isVerified": true, "hash": "0xdef...456" },
-  { "id": "TRIP-003", "startTime": "2023-10-27 11:30", "endTime": "2023-10-27 12:00", "distance": "10.1 km", "safetyScore": 95, "incidents": 0, "isVerified": false, "hash": "0xghi...789" },
-  { "id": "TRIP-004", "startTime": "2023-10-27 13:00", "endTime": "2023-10-27 14:15", "distance": "45.8 km", "safetyScore": 89, "incidents": 0, "isVerified": true, "hash": "0xjkl...012" }
-]

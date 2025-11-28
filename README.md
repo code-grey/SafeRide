@@ -1,53 +1,64 @@
 # SafeRide: DePIN Driver Safety Network 🛡️🚗
 
-**SafeRide** is a Decentralized Physical Infrastructure Network (DePIN) prototype that incentivizes safe driving using AI, IoT, and the Solana Blockchain.
+> **Hackathon Winner Candidate 🏆 | Solana DePIN Track**
 
-## 🌟 Features
+**SafeRide** is a Decentralized Physical Infrastructure Network (DePIN) that incentivizes safe driving using AI, IoT, and the Solana Blockchain. It detects driver fatigue and distraction in real-time, logging critical safety data immutably on-chain.
 
-*   **AI-Powered Monitoring:** Computer Vision (MediaPipe) detects Drowsiness and Distraction in real-time.
-*   **IoT Telemetry:** Raspberry Pi Pico W simulates vehicle dynamics (Rash Driving, Stress).
-*   **Immutable Ledger:** Every critical event is cryptographically signed and logged on the **Solana Devnet**.
-*   **Real-Time Dashboard:** A SvelteKit + Tailwind v4 dashboard visualizing driver state and blockchain verification.
-*   **Insurance AI:** Proof-of-Concept underwriting model based on behavioral data.
+![SafeRide Dashboard](docs/dashboard-preview.png) 
+*(Note: Add a screenshot here if available)*
 
 ---
 
-## 🏗️ Architecture
+## 🌟 Key Features
 
-`Webcam/IoT -> MQTT Broker -> Go Backend -> Redis (Hot State) -> SvelteKit Frontend`
-`Backend -> Solana Blockchain (Memo Program)`
+*   **👁️ AI-Powered Monitoring:** Real-time Computer Vision (MediaPipe) detects **Drowsiness** (Eye Aspect Ratio) and **Distraction** (Head Pose).
+*   **🏎️ IoT Telemetry:** Raspberry Pi Pico W captures vehicle dynamics like **Rash Driving** and **Impact Detection**.
+*   **⛓️ Immutable Ledger:** Safety incidents are cryptographically signed and logged on **Solana Devnet** using the Memo Program.
+*   **📊 Live Dashboard:** A modern SvelteKit UI displaying real-time driver status, health metrics, and blockchain verification.
+*   **💰 Token Rewards:** Drivers earn points for "Safe Streaks," redeemable for insurance discounts (Mock).
 
 ---
 
-## 🚀 Getting Started
+## 🏗️ System Architecture
+
+The system follows a robust "Edge-to-Chain" architecture:
+
+1.  **Edge (IoT/AI):** 
+    *   **Computer Vision Agent:** Python + MediaPipe (runs on host/laptop).
+    *   **Vehicle Unit:** Raspberry Pi Pico W (MicroPython) sends MQTT telemetry.
+2.  **Ingestion:**
+    *   **MQTT Broker:** Eclipse Mosquitto (Docker).
+    *   **Backend:** Go (Gin) Service.
+3.  **State & Storage:**
+    *   **Hot State:** Redis (Docker).
+    *   **Cold Storage:** Solana Blockchain (Devnet).
+4.  **Presentation:**
+    *   **Frontend:** SvelteKit + TailwindCSS (Docker).
+
+---
+
+## 🚀 One-Click Demo Setup
+
+We have containerized the entire stack for a seamless "One-Click" launch.
 
 ### Prerequisites
-*   **Docker** & **Docker Compose**
-*   **Go** (v1.23+)
-*   **Node.js** (v18+)
-*   **Python** (v3.10+ for CV Agent)
+*   **Docker Desktop** (Running)
+*   **Python 3.10+** (For the Computer Vision Agent)
+*   **Webcam**
 
-### 1. Start Infrastructure (MQTT + Redis)
+### Step 1: Launch the Cloud Stack ☁️
+Run the following command to start the Backend, Frontend, Redis, and MQTT broker:
+
 ```bash
-docker-compose -f docker-compose.infra.yml up -d
+docker-compose up --build
 ```
 
-### 2. Start Backend (Go)
-```bash
-cd backend
-go run main.go
-```
+Once the build completes:
+*   **Dashboard:** [http://localhost:3000](http://localhost:3000)
+*   **API:** [http://localhost:8080](http://localhost:8080)
 
-### 3. Start Frontend (SvelteKit)
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Access the dashboard at `http://localhost:5173/dashboard`.
-
-### 4. Start Computer Vision Agent ("Project Hawkeye") 🦅
-Use the helper script for your OS:
+### Step 2: Launch the AI Agent 🦅
+The Computer Vision agent runs directly on your machine to access the webcam.
 
 **Windows:**
 ```batch
@@ -59,27 +70,40 @@ run_cv.bat
 ./run_cv.sh
 ```
 
----
-
-## 🧪 Simulation Tools
-
-Don't have a webcam? Use our simulation scripts to trigger events manually:
-
-*   **Safe:** `scripts/send_safe.bat` / `.sh`
-*   **Fatigue:** `scripts/send_fatigue.bat` / `.sh`
-*   **Rash Driving:** `scripts/send_rash.bat` / `.sh`
+*Ensure your webcam is active. The agent will start publishing "Fatigue" or "Safe" signals to the dashboard based on your face.*
 
 ---
 
-## 📚 Documentation
+## 🧪 Simulation / Manual Testing
 
-*   [Development Blog](docs/dev-blog.md) - The journey from idea to prototype.
-*   [Hardware Roadmap (V2)](docs/real-implement.md) - Plans for IMU/OBD-II integration.
-*   [Insurance AI Logic](docs/insurance-ai-logic.md) - The math behind the risk score.
-*   [Market Analysis](docs/market-analysis.md) - USP and Competitor landscape.
-*   [Demo Script](docs/demo-script.md) - Step-by-step walkthrough.
+If you don't have a webcam or want to force specific states, use our simulation scripts:
+
+| Status | Script | Description |
+| :--- | :--- | :--- |
+| **Safe** | `scripts/send_safe.bat` | Resets status to Normal. |
+| **Fatigue** | `scripts/send_fatigue.bat` | Triggers Red Alert & Solana Transaction. |
+| **Rash** | `scripts/send_rash.bat` | Simulates dangerous driving. |
+| **Drowsy** | `scripts/send_drowsy.bat` | Simulates early signs of sleepiness. |
+
+---
+
+## 📂 Project Structure
+
+*   `backend/`: Go (Gin) API & Solana Service.
+*   `frontend/`: SvelteKit Dashboard (Svelte 5).
+*   `cv/`: Python Computer Vision Logic.
+*   `iot/`: MicroPython code for Pico W.
+*   `docs/`: Detailed documentation & Dev Logs.
+
+---
+
+## 📜 Documentation & Resources
+
+*   [**Development Blog**](docs/dev-blog.md): Read about our 4-day sprint journey.
+*   [**Walkthrough Guide**](docs/walkthrough.md): Detailed feature explanation.
+*   [**Insurance Model**](docs/insurance-ai-logic.md): The math behind the safety score.
 
 ---
 
 **License:** MIT
-**Built for the DePIN Hackathon 2025.**
+**Team CodeGrey**

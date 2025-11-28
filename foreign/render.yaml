@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: saferide-backend
-    env: go
-    rootDir: backend
-    buildCommand: go build -o app
-    startCommand: ./app
