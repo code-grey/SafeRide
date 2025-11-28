@@ -24,6 +24,7 @@
     long: 0,
     confidence: 0,
     timestamp: 0,
+    heart_rate: 0, // Initial value
   });
   /** @type {any[]} */
   let history = $state([]);
@@ -235,7 +236,16 @@
   const fatigueLevel = $derived(
     isFatigue ? "High" : isDistracted ? "Medium" : "Low",
   );
-  const healthStatus = $derived(isSafe ? "Normal" : "Abnormal");
+  const healthStatus = $derived(
+    telemetry.heart_rate && telemetry.heart_rate > 120
+      ? `${telemetry.heart_rate} BPM`
+      : isSafe
+        ? "Normal"
+        : "Abnormal",
+  );
+  const isHealthCritical = $derived(
+    telemetry.heart_rate && telemetry.heart_rate > 120,
+  );
 
   // Dynamic Background Color for "Driver Monitor" Widget
   const driverMonitorBg = $derived(
@@ -361,7 +371,11 @@
             icon={faHeartbeat}
             label="Health Stats"
             value={healthStatus}
-            color={isSafe ? "text-green-500" : "text-red-500"}
+            color={isHealthCritical
+              ? "text-red-500"
+              : isSafe
+                ? "text-green-500"
+                : "text-red-500"}
           />
         </div>
 

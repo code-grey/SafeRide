@@ -92,6 +92,13 @@ func (s *MQTTService) onMessageReceived() mqtt.MessageHandler {
 			data.Source = "ai"
 		}
 
+		// --- NEW: Health Emergency Logic ---
+		if data.HeartRate > 120 {
+			data.Status = "HEALTH_CRITICAL"
+			data.Source = "biometric"
+			// Force immediate alert (bypass rate limit logic below)
+		}
+
 		// Re-marshal payload with normalized status and timestamp
 		payload, _ = json.Marshal(data)
 
@@ -199,10 +206,11 @@ func (s *MQTTService) onMessageReceived() mqtt.MessageHandler {
 			}
 
 			// Only send if > 10 seconds have passed since last alert (for Driver Events)
-			// OR if it is a Vehicle Event (Immediate Trigger)
+			// OR if it is a Vehicle Event OR Health Critical (Immediate Trigger)
 			isVehicleEvent := (data.Status == "harsh turn" || data.Status == "hard braking")
+			isHealthCritical := (data.Status == "HEALTH_CRITICAL")
 
-			if isVehicleEvent || time.Now().Unix()-lastAlertTs > 10 {
+			if isVehicleEvent || isHealthCritical || time.Now().Unix()-lastAlertTs > 10 {
 				log.Printf("⚠️ INCIDENT DETECTED: %s (Vehicle: %s)", data.Status, data.VehicleID)
 				go s.blockchainService.sendSolanaAlert(data)
 

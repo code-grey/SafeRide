@@ -4,6 +4,7 @@ package main
 
 type Telemetry struct {
 	VehicleID  string  `json:"vehicle_id"`
+	HeartRate  int     `json:"heart_rate"` // New field for Health Stats
 	Timestamp  int64   `json:"timestamp"`
 	Status     string  `json:"status"` // "safe", "fatigue", "distracted", "rash driving", "stress"
 	Lat        float64 `json:"lat"`

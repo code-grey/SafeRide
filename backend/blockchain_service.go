@@ -36,8 +36,14 @@ func (s *BlockchainService) sendSolanaAlert(data Telemetry) {
 	log.Printf("⛓️ Initiating Solana Transaction for %s [%s]...", data.VehicleID, data.Status)
 
 	// 1. Create the Memo String
-	memoText := fmt.Sprintf("SAFERIDE ALERT [%s]: %s | ID: %s | TIME: %d | CONF: %.2f",
-		data.Source, data.Status, data.VehicleID, data.Timestamp, data.Confidence)
+	var memoText string
+	if data.Status == "HEALTH_CRITICAL" {
+		memoText = fmt.Sprintf("SAFERIDE MEDICAL ALERT [HR: %d BPM]: %s | ID: %s | TIME: %d",
+			data.HeartRate, data.Status, data.VehicleID, data.Timestamp)
+	} else {
+		memoText = fmt.Sprintf("SAFERIDE ALERT [%s]: %s | ID: %s | TIME: %d | CONF: %.2f",
+			data.Source, data.Status, data.VehicleID, data.Timestamp, data.Confidence)
+	}
 	log.Printf("📝 Memo: %s", memoText)
 
 	// 2. Build Instructions

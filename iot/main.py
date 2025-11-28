@@ -3,7 +3,8 @@ import time
 import json
 import machine
 from umqtt.simple import MQTTClient
-import sh1306 # This should be sh1106
+import sh1106 # This should be sh1106
+import random
 
 # ==========================================
 # 1. CONFIGURATION
@@ -19,6 +20,11 @@ MQTT_BROKER_IP = "192.168.1.4"      # <--- Update this!
 btn_safe = machine.Pin(14, machine.Pin.IN, machine.Pin.PULL_UP)
 btn_rash = machine.Pin(15, machine.Pin.IN, machine.Pin.PULL_UP)
 btn_stress = machine.Pin(16, machine.Pin.IN, machine.Pin.PULL_UP)
+btn_heart = machine.Pin(17, machine.Pin.IN, machine.Pin.PULL_UP) # New Heart Rate Wire
+
+# ... (rest of code)
+
+
 
 # OLED (SH1106)
 i2c = machine.SoftI2C(sda=machine.Pin(0), scl=machine.Pin(1), freq=100000)
@@ -123,8 +129,24 @@ def main():
             elif btn_rash.value() == 0: status_to_send = "harsh turn"
             elif btn_stress.value() == 0: status_to_send = "hard braking"
             
-            if status_to_send and (now - last_press > 0.5):
-                print(f"Sending: {status_to_send} (from Pico)")
+            # Heart Rate Logic
+            # Wire Connected (LOW) = High BPM (Critical)
+            # Wire Disconnected (HIGH) = Normal BPM
+            if btn_heart.value() == 0:
+                heart_rate = random.randint(125, 145) # Critical
+            else:
+                heart_rate = random.randint(60, 80) # Normal
+
+            # Determine if we should send data
+            should_send = False
+            if status_to_send:
+                should_send = True
+            elif heart_rate > 100: # Critical Heart Rate Trigger
+                should_send = True
+                status_to_send = "safe_vehicle" # Default status for health alert
+
+            if should_send and (now - last_press > 0.5):
+                print(f"Sending: {status_to_send} (HR: {heart_rate})")
                 
                 # Optimistic UI Update (will be confirmed by MQTT echo)
                 global current_vehicle_status
@@ -137,7 +159,8 @@ def main():
                     "status": status_to_send,
                     "lat": 28.7041,
                     "long": 77.1025,
-                    "confidence": 0.99
+                    "confidence": 0.99,
+                    "heart_rate": heart_rate # Send HR
                 })
                 client.publish(MQTT_TOPIC, payload)
                 last_press = now

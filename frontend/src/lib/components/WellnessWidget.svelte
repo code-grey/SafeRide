@@ -7,7 +7,8 @@
 </script>
 
 <div
-  class="bg-dark-surface/50 backdrop-blur-xl border border-white/10 rounded-xl p-6 flex items-center shadow-lg transition-all duration-300 hover:bg-dark-surface/70"
+  class={`backdrop-blur-xl border rounded-xl p-6 flex items-center shadow-lg transition-all duration-300 
+  ${color.includes("red") && value.includes("BPM") ? "bg-red-900/40 border-red-500 animate-pulse shadow-[0_0_15px_rgba(239,68,68,0.5)]" : "bg-dark-surface/50 border-white/10 hover:bg-dark-surface/70"}`}
 >
   <div class={`text-4xl md:text-5xl mr-6 ${color} drop-shadow-glow`}>
     <Fa {icon} />

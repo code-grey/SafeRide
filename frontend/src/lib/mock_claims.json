@@ -1,0 +1,70 @@
+[
+    {
+        "id": "CLM-2024-889",
+        "policy_holder": "Adrish Bora",
+        "vehicle_id": "v-101",
+        "incident_type": "Medical Emergency",
+        "date": "2024-11-28",
+        "status": "Pending Review",
+        "amount": "$2,500",
+        "ai_score": 98,
+        "ai_verdict": "Genuine",
+        "description": "Driver reported chest pain followed by emergency stop. Biometric data confirms distress.",
+        "timeline": [
+            {
+                "time": "T-5m",
+                "event": "Normal Driving",
+                "status": "safe"
+            },
+            {
+                "time": "T-2m",
+                "event": "Heart Rate Spike (145 BPM)",
+                "status": "HEALTH_CRITICAL"
+            },
+            {
+                "time": "T-30s",
+                "event": "Hard Braking",
+                "status": "hard braking"
+            },
+            {
+                "time": "T-0s",
+                "event": "Vehicle Stopped",
+                "status": "safe"
+            }
+        ]
+    },
+    {
+        "id": "CLM-2024-902",
+        "policy_holder": "John Doe",
+        "vehicle_id": "v-102",
+        "incident_type": "Collision",
+        "date": "2024-11-27",
+        "status": "Flagged",
+        "amount": "$15,000",
+        "ai_score": 12,
+        "ai_verdict": "High Risk",
+        "description": "Vehicle impact reported. Telemetry indicates reckless driving behavior prior to incident.",
+        "timeline": [
+            {
+                "time": "T-5m",
+                "event": "Harsh Acceleration",
+                "status": "rash driving"
+            },
+            {
+                "time": "T-2m",
+                "event": "Speeding (120 km/h)",
+                "status": "rash driving"
+            },
+            {
+                "time": "T-10s",
+                "event": "Harsh Turn",
+                "status": "harsh turn"
+            },
+            {
+                "time": "T-0s",
+                "event": "Impact Detected",
+                "status": "accident"
+            }
+        ]
+    }
+]

@@ -1,4 +1,10 @@
-fix: chart rendering and update test scripts
+feat: enhance gamification, iot display, and widget styling
 
-- Frontend: Enabled `spanGaps` in Chart.js to fix disjointed lines.
-- Scripts: Updated batch files to use new status signals (harsh turn, hard braking, safe_vehicle).
+- Backend: 
+  - Bypassed rate limiter for Vehicle Events (harsh turn, hard braking).
+  - Added 'Source' to Solana Memo for clarity.
+  - Tuned `SAFE_STREAK_THRESHOLD` to 15s for demo.
+- Frontend: 
+  - Updated `WellnessWidget` styling to match dashboard theme.
+- IoT: 
+  - Implemented dual-status OLED display (Driver + Vehicle).
