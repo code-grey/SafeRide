@@ -198,12 +198,15 @@ func (s *MQTTService) onMessageReceived() mqtt.MessageHandler {
 				lastAlertTs, _ = strconv.ParseInt(lastAlertTsStr, 10, 64)
 			}
 
-			// Only send if > 5 seconds have passed since last alert
-			if time.Now().Unix()-lastAlertTs > 5 {
+			// Only send if > 10 seconds have passed since last alert (for Driver Events)
+			// OR if it is a Vehicle Event (Immediate Trigger)
+			isVehicleEvent := (data.Status == "harsh turn" || data.Status == "hard braking")
+
+			if isVehicleEvent || time.Now().Unix()-lastAlertTs > 10 {
 				log.Printf("⚠️ INCIDENT DETECTED: %s (Vehicle: %s)", data.Status, data.VehicleID)
 				go s.blockchainService.sendSolanaAlert(data)
 
-				// Update last alert timestamp
+				// Update last alert timestamp (only if we actually sent it)
 				s.redisClient.Set(s.ctx, lastAlertTsKey, strconv.FormatInt(time.Now().Unix(), 10), 0)
 			} else {
 				log.Printf("⚠️ Rate Limit: Skipping duplicate alert for %s", data.VehicleID)

@@ -1,7 +1,4 @@
-fix: stabilize frontend and tune cv sensitivity
+fix: chart rendering and update test scripts
 
-- Frontend: Restored dashboard logic, fixed Svelte 5 syntax, re-enabled particles.
-- Backend: Added CORS middleware, updated MQTT logic for source tracking.
-- CV: Tuned drowsiness thresholds (MAR 0.8) and added sneeze filter.
-- IoT: Renamed status signals (rash driving -> harsh turn).
-- Docs: Updated walkthrough with cache flush instructions.
+- Frontend: Enabled `spanGaps` in Chart.js to fix disjointed lines.
+- Scripts: Updated batch files to use new status signals (harsh turn, hard braking, safe_vehicle).

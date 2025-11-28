@@ -36,8 +36,8 @@ func (s *BlockchainService) sendSolanaAlert(data Telemetry) {
 	log.Printf("⛓️ Initiating Solana Transaction for %s [%s]...", data.VehicleID, data.Status)
 
 	// 1. Create the Memo String
-	memoText := fmt.Sprintf("SAFERIDE ALERT: %s | ID: %s | TIME: %d | CONF: %.2f",
-		data.Status, data.VehicleID, data.Timestamp, data.Confidence)
+	memoText := fmt.Sprintf("SAFERIDE ALERT [%s]: %s | ID: %s | TIME: %d | CONF: %.2f",
+		data.Source, data.Status, data.VehicleID, data.Timestamp, data.Confidence)
 	log.Printf("📝 Memo: %s", memoText)
 
 	// 2. Build Instructions
@@ -106,7 +106,7 @@ func (s *BlockchainService) sendSolanaAlert(data Telemetry) {
 	// 5. Update Redis with the Hash
 	data.TxHash = sig.String()
 	updatedJSON, _ := json.Marshal(data)
-	
+
 	// A. Update Hot State
 	err = s.redisClient.Set(s.ctx, data.VehicleID, updatedJSON, time.Hour).Err()
 	if err != nil {
@@ -191,12 +191,12 @@ func (s *BlockchainService) sendSolanaSafeAttestation(data Telemetry, pointsAwar
 
 	// 5. Update Telemetry data with hash and specific status, then push to Redis alerts list
 	data.TxHash = sigStr
-		data.Status = "SAFE_STREAK_ATTESTATION" // New status for frontend
-		updatedJSON, _ := json.Marshal(data)
-		
+	data.Status = "SAFE_STREAK_ATTESTATION" // New status for frontend
+	updatedJSON, _ := json.Marshal(data)
+
 	alertKey := fmt.Sprintf("alerts:%s", data.VehicleID)
-		s.redisClient.RPush(s.ctx, alertKey, updatedJSON)
-		s.redisClient.LTrim(s.ctx, alertKey, -20, -1) // Keep last 20 alerts
+	s.redisClient.RPush(s.ctx, alertKey, updatedJSON)
+	s.redisClient.LTrim(s.ctx, alertKey, -20, -1) // Keep last 20 alerts
 }
 
 // sendSolanaPeriodicSafeAttestation sends a transaction to the Solana Blockchain for periodic safe driving attestation.
@@ -272,7 +272,7 @@ func (s *BlockchainService) sendSolanaPeriodicSafeAttestation(data Telemetry) {
 	data.TxHash = sigStr
 	data.Status = "PERIODIC_SAFE_ATTESTATION" // New status for frontend
 	updatedJSON, _ := json.Marshal(data)
-	
+
 	alertKey := fmt.Sprintf("alerts:%s", data.VehicleID)
 	s.redisClient.RPush(s.ctx, alertKey, updatedJSON)
 	s.redisClient.LTrim(s.ctx, alertKey, -20, -1) // Keep last 20 alerts

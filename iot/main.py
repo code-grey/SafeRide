@@ -57,19 +57,43 @@ def connect_wifi():
         return ip
     return None
 
-def draw_status(status_text): # Reverted to single status
+# Global State
+current_driver_status = "UNKNOWN"
+current_vehicle_status = "UNKNOWN"
+
+def draw_dual_status():
     oled.fill(0)
-    oled.text("SafeRide", 35, 0)
-    
-    # Draw frame
-    oled.rect(0, 15, 128, 49, 1)
-    
-    status_text = status_text.upper()
-    # Center text roughly
-    x_pos = max(0, 64 - (len(status_text) * 4))
-    oled.text(status_text, x_pos, 35)
+    # Header
+    oled.text("SafeRide Monitor", 0, 0)
+    oled.hline(0, 10, 128, 1)
+
+    # Driver Status (Top)
+    oled.text("DRIVER:", 0, 15)
+    oled.text(current_driver_status[:16], 0, 25)
+
+    # Vehicle Status (Bottom)
+    oled.text("VEHICLE:", 0, 40)
+    oled.text(current_vehicle_status[:16], 0, 50)
     
     oled.show()
+
+def sub_cb(topic, msg):
+    global current_driver_status, current_vehicle_status
+    try:
+        payload = json.loads(msg)
+        status = payload.get("status", "unknown").upper()
+        
+        # Determine type based on status value
+        # Driver Statuses
+        if status in ["SAFE", "DROWSY", "DISTRACTED", "FATIGUE"]:
+            current_driver_status = status
+        # Vehicle Statuses
+        elif status in ["SAFE_VEHICLE", "HARSH TURN", "HARD BRAKING"]:
+            current_vehicle_status = status.replace("SAFE_VEHICLE", "SAFE")
+            
+        draw_dual_status()
+    except Exception as e:
+        print(f"Error parsing msg: {e}")
 
 def main():
     try:
@@ -80,13 +104,18 @@ def main():
             return
 
         client = MQTTClient("pico-w-saferide", MQTT_BROKER_IP, port=1883)
+        client.set_callback(sub_cb)
         client.connect()
+        client.subscribe(MQTT_TOPIC)
+        print(f"Subscribed to {MQTT_TOPIC}")
 
         # Initial Screen
-        draw_status("READY")
+        draw_dual_status()
         
         last_press = 0
         while True:
+            client.check_msg() # Check for incoming messages (non-blocking)
+            
             now = time.time()
             status_to_send = None
             
@@ -96,7 +125,11 @@ def main():
             
             if status_to_send and (now - last_press > 0.5):
                 print(f"Sending: {status_to_send} (from Pico)")
-                draw_status(status_to_send) # Update OLED immediately
+                
+                # Optimistic UI Update (will be confirmed by MQTT echo)
+                global current_vehicle_status
+                current_vehicle_status = status_to_send.upper().replace("SAFE_VEHICLE", "SAFE")
+                draw_dual_status()
                 
                 payload = json.dumps({
                     "vehicle_id": VEHICLE_ID,
@@ -104,7 +137,7 @@ def main():
                     "status": status_to_send,
                     "lat": 28.7041,
                     "long": 77.1025,
-                    "confidence": 0.99 # No source field
+                    "confidence": 0.99
                 })
                 client.publish(MQTT_TOPIC, payload)
                 last_press = now

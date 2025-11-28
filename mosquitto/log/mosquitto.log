@@ -589,3 +589,4 @@
 1764308354: New client connected from ::1:33962 as auto-84CB9695-11F3-D903-B728-772337A722BC (p2, c1, k60).
 1764308354: Client auto-84CB9695-11F3-D903-B728-772337A722BC disconnected.
 1764308361: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764309212: Client saferide-backend disconnected.
