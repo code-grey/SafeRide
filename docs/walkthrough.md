@@ -1,71 +1,122 @@
-# SafeRide Updates Walkthrough
+# SafeRide: The Official Demo Walkthrough 🎭
 
-## 1. Rewards Redemption
-**Goal:** Make the "Redeem" button functional.
+This guide is designed to help you present **SafeRide** effectively during a hackathon demo or presentation. It follows a narrative flow: **"From Risk to Reward."**
 
-### Changes
-- **Backend:** Added `POST /api/redeem-points` endpoint.
-  - Accepts `{ "vehicle_id": "...", "points": 500 }`.
-  - Atomically deducts points from Redis.
-- **Frontend:** Updated `src/routes/rewards/+page.svelte`.
-  - `handleRedeem` now calls the API.
-  - Updates `tokenBalance` on success.
+---
 
-## 2. Monitor Ambiguity (Driver vs Vehicle)
-**Goal:** Distinguish between CV (Driver) and IoT (Vehicle) alerts.
+## 🎬 Phase 1: The Setup (Pre-Demo)
 
-### Changes
-- **IoT (`iot/main.py`):**
-  - Changed "safe" status to "safe_vehicle".
-  - Renamed "stress" -> **"hard braking"**.
-  - Renamed "rash driving" -> **"harsh turn"**.
-- **Backend (`mqtt_service.go`):**
-  - Detects "safe_vehicle" -> Updates `vehicle_status` key.
-  - Detects "harsh turn" / "hard braking" -> Updates `vehicle_status` key.
-  - Detects "fatigue/distracted" -> Updates `driver_status` key.
-  - Normalizes "safe_vehicle" to "safe" for the main status/history.
-  - Adds `source` ("ai" or "iot") to the telemetry payload.
-- **Backend (`http_routes.go`):**
-  - `GET /api/status/:vehicle_id` now returns `driver_status` and `vehicle_status`.
-- **Frontend (`dashboard/+page.svelte`):**
-  - Split the "Live Monitor" into:
-    - **Driver Status:** Shows Fatigue, Distracted, Safe.
-    - **Vehicle Status:** Shows Harsh Turn, Hard Braking, Safe.
+**Goal:** Ensure the system is live and clean.
 
-### 4. CV Agent Upgrade (Drowsiness & Robustness)
-**Goal:** Send intermediate "Drowsy" alert and filter false positives (Sneezing).
+1.  **Launch the Stack:**
+    ```bash
+    docker-compose up --build -d
+    ```
+2.  **Clear Old Data (Optional but Recommended):**
+    ```bash
+    docker exec -it saferide-redis redis-cli FLUSHALL
+    docker restart saferide-backend
+    ```
+3.  **Open the Tabs:**
+    *   [http://localhost:3000](http://localhost:3000) (Landing Page)
+    *   [http://localhost:3000/dashboard](http://localhost:3000/dashboard) (The Main Interface)
+    *   [https://explorer.solana.com/?cluster=devnet](https://explorer.solana.com/?cluster=devnet) (Keep this ready)
 
-### Changes
-- **CV (`cv/main.py`):**
-  - **Added MAR (Mouth Aspect Ratio):** Detects Yawning.
-  - **Updated Thresholds:**
-    - **Drowsy:** Eyes closed for 1.5s (45 frames) OR Yawning.
-    - **Fatigue:** Eyes closed for 2.5s (75 frames) -> Microsleep.
-  - **Sneeze Filter:** If Eyes Closed < 1.0s AND Mouth Open -> Ignored (Likely Sneeze/Talking).
+---
 
-## 3. Graph Visualization
-**Goal:** Show overlapping lines for AI and IoT data with accurate severity scale.
+## 🗣️ Phase 2: The Pitch (Landing Page)
 
-### Changes
-- **Backend:** Added `source` field to Telemetry history.
-- **Frontend:** Updated Chart.js logic in Dashboard.
-  - **Y-Axis Scale:**
-    - 0: Safe
-    - 1: Distracted
-    - 2: Harsh Turn
-    - 3: Drowsy
-    - 4: Hard Braking
-    - 5: FATIGUE
-  - **Dataset 1 (Blue):** Driver Risk (Source: AI).
-  - **Dataset 2 (Purple):** Vehicle Risk (Source: IoT).
+*Start at the **Landing Page**.*
 
-## Verification Steps
-1.  **Run Infrastructure:** `docker-compose up --build -d` (One-Click)
-2.  **Flush Cache (Clean Slate):**
-    - **Redis:** `docker exec -it saferide-redis redis-cli FLUSHALL`
-    - **Restart Backend:** `docker restart saferide-backend`
-3.  **Test Rewards:** Go to `/rewards`, click Redeem. Check if points deduct.
-4.  **Test Monitor:**
-    - **Windows:** Run `scripts/windows/send_harsh_turn.bat` -> Verify "Vehicle Status" updates to Purple.
-    - **Linux/Mac:** Run `scripts/linux/send_fatigue.sh` -> Verify "Driver Status" updates to Red.
-5.  **Test Graph:** Generate both alerts and watch the graph plot two lines at correct Y-levels.
+> "SafeRide is a DePIN solution that incentivizes safe driving. We combine **AI** (Computer Vision), **IoT** (Vehicle Telemetry), and **Blockchain** (Immutable Logs) to create a complete safety ecosystem."
+
+**Action:**
+1.  Scroll down to show **"How It Works"**.
+2.  Click **"Driver Portal"** to transition to the Dashboard.
+
+---
+
+## 🖥️ Phase 3: The Live Monitor (Dashboard)
+
+*Transition to the **Dashboard**. It should be showing "Safe" (Green).*
+
+> "This is the Fleet Commander view. Here, we see real-time telemetry from the vehicle."
+
+**Highlight Features:**
+1.  **Driver Status (Left Widget):** Currently **SAFE** (Green). Monitors fatigue/distraction via CV.
+2.  **Vehicle Status (Left Widget):** Currently **SAFE** (Green). Monitors harsh braking/turns via IoT.
+3.  **Wellness Widgets (Bottom):** Heart Rate, Fatigue Level, Alertness.
+4.  **Blockchain Log (Right Panel):** Currently empty or showing "Safe Attestations".
+
+---
+
+## 🚨 Phase 4: The Incident (Simulation)
+
+*Now, we simulate a dangerous event. Use the scripts in a separate terminal window.*
+
+> "Let's see what happens when our AI detects a microsleep event."
+
+**Action (Windows):**
+```batch
+scripts\windows\send_fatigue.bat
+```
+*(Mac/Linux: `scripts/linux/send_fatigue.sh`)*
+
+**Observe & Narrate:**
+1.  **Visual Alarm:** The "Driver Status" widget turns **RED** and pulses.
+2.  **Graph Spike:** The behavior graph spikes to Level 5 (FATIGUE).
+3.  **Blockchain Trigger:** Point to the "Incident History" list. A new entry appears: **"FATIGUE DETECTED"**.
+4.  **Verification:**
+    > "Critically, this event is not just stored in a database. It is signed and sent to the Solana Blockchain."
+    *   Wait for the **"View on Solana"** link to appear (approx. 2-5 seconds).
+    *   Click the link to open the Solana Explorer.
+    *   **Show the Memo:** "SAFERIDE ALERT: fatigue | ID: v-101"
+
+---
+
+## 🧪 Phase 5: Multi-Modal Sensing (Vehicle Incident)
+
+*Simulate a different type of risk to show the system's versatility.*
+
+> "It's not just about the driver. Our IoT sensors also detect dangerous driving maneuvers."
+
+**Action (Windows):**
+```batch
+scripts\windows\send_harsh_turn.bat
+```
+*(Mac/Linux: `scripts/linux/send_harsh_turn.sh`)*
+
+**Observe:**
+1.  **Visual Alarm:** The "Vehicle Status" widget turns **PURPLE**.
+2.  **Differentiation:** Notice how the *Driver* status remains unaffected (or separate), while the *Vehicle* status flags the specific mechanical risk.
+
+---
+
+## 🏆 Phase 6: The Reward (Gamification)
+
+*Transition to the **Rewards Page**.*
+
+> "We don't just punish bad driving; we incentivize safety. Drivers earn points for 'Safe Streaks'."
+
+**Action:**
+1.  Click **"Rewards"** in the sidebar.
+2.  Show the **Current Balance**.
+3.  **Simulate Safety:** Run the safe script to accumulate points (you may need to run it 5 times quickly to trigger a streak if you reset the DB).
+    *   *Windows:* `scripts\windows\send_safe_driver.bat`
+    *   *Mac/Linux:* `scripts/linux/send_safe_driver.sh`
+4.  **Redeem:**
+    *   Click the **"Redeem"** button on a reward card (e.g., "5% Insurance Discount").
+    *   Watch the balance decrease.
+    *   > "This redemption is processed atomically, closing the loop between physical safety and economic value."
+
+---
+
+## 🏁 Phase 7: Closing
+
+*Return to the Dashboard.*
+
+> "This is SafeRide. From Edge AI detection to Blockchain verification, we are building the trust layer for the future of mobility."
+
+---
+
+**End of Demo.**
