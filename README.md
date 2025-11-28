@@ -5,7 +5,6 @@
 **SafeRide** is a Decentralized Physical Infrastructure Network (DePIN) that incentivizes safe driving using AI, IoT, and the Solana Blockchain. It detects driver fatigue and distraction in real-time, logging critical safety data immutably on-chain.
 
 ![SafeRide Dashboard](docs/dashboard-preview.png) 
-*(Note: Add a screenshot here if available)*
 
 ---
 
