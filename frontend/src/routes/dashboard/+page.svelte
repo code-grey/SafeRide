@@ -99,6 +99,8 @@
 
   function updateChart() {
     if (!chart) return;
+    console.log("updateChart called. History length:", history.length); // DEBUG
+
     /** @type {Record<string, number>} */
     const statusMap = {
       safe: 0,
@@ -108,7 +110,49 @@
       "hard braking": 4,
       fatigue: 5,
     };
-    // ... (rest of updateChart)
+    const labels = history.map((h) =>
+      new Date(h.timestamp * 1000).toLocaleTimeString(),
+    );
+
+    // Driver Data (Source: ai or legacy/unknown)
+    const driverData = history.map((h) => {
+      const val =
+        h.source === "ai" || !h.source
+          ? statusMap[h.status.toLowerCase()] || 0
+          : null;
+      return val;
+    });
+
+    // Vehicle Data (Source: iot)
+    const vehicleData = history.map((h) => {
+      const val =
+        h.source === "iot" ? statusMap[h.status.toLowerCase()] || 0 : null;
+      return val;
+    });
+
+    console.log("Driver Data:", driverData.filter((v) => v !== null).length); // DEBUG
+    console.log("Vehicle Data:", vehicleData.filter((v) => v !== null).length); // DEBUG
+
+    chart.data.labels = labels;
+    chart.data.datasets[0].label = "Driver Risk";
+    chart.data.datasets[0].data = driverData;
+
+    // Add Vehicle Dataset if missing
+    if (!chart.data.datasets[1]) {
+      console.log("Adding Vehicle Dataset"); // DEBUG
+      chart.data.datasets.push({
+        label: "Vehicle Risk",
+        data: [],
+        borderColor: "#a855f7", // Purple
+        backgroundColor: "rgba(168, 85, 247, 0.2)",
+        tension: 0.4,
+        fill: true,
+        spanGaps: true, // Fix for disjointed lines
+      });
+    }
+    chart.data.datasets[1].data = vehicleData;
+
+    chart.update();
   }
 
   $effect(() => {
@@ -127,6 +171,7 @@
               backgroundColor: "rgba(96, 165, 250, 0.2)",
               tension: 0.4,
               fill: true,
+              spanGaps: true, // Fix for disjointed lines
             },
           ],
         },

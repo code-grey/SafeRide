@@ -1,0 +1,7 @@
+fix: stabilize frontend and tune cv sensitivity
+
+- Frontend: Restored dashboard logic, fixed Svelte 5 syntax, re-enabled particles.
+- Backend: Added CORS middleware, updated MQTT logic for source tracking.
+- CV: Tuned drowsiness thresholds (MAR 0.8) and added sneeze filter.
+- IoT: Renamed status signals (rash driving -> harsh turn).
+- Docs: Updated walkthrough with cache flush instructions.

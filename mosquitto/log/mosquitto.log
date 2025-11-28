@@ -557,3 +557,35 @@
 1764266597: Client cv-agent closed its connection.
 1764266915: mosquitto version 2.0.22 terminating
 1764266915: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764304575: mosquitto version 2.0.22 starting
+1764304575: Config loaded from /mosquitto/config/mosquitto.conf.
+1764304575: Opening ipv4 listen socket on port 1883.
+1764304575: Opening ipv6 listen socket on port 1883.
+1764304575: mosquitto version 2.0.22 running
+1764304617: New connection from 172.18.0.1:56178 on port 1883.
+1764304617: New client connected from 172.18.0.1:56178 as saferide-backend (p2, c1, k30).
+1764304685: New connection from 172.18.0.1:54828 on port 1883.
+1764304685: New client connected from 172.18.0.1:54828 as cv-agent (p2, c1, k60).
+1764304916: Client saferide-backend disconnected.
+1764304926: Client cv-agent closed its connection.
+1764305108: New connection from 172.18.0.1:48710 on port 1883.
+1764305108: New client connected from 172.18.0.1:48710 as cv-agent (p2, c1, k60).
+1764305486: Client cv-agent closed its connection.
+1764305709: New connection from 172.18.0.1:35732 on port 1883.
+1764305709: New client connected from 172.18.0.1:35732 as saferide-backend (p2, c1, k30).
+1764305712: New connection from 172.18.0.1:42574 on port 1883.
+1764305712: New client connected from 172.18.0.1:42574 as cv-agent (p2, c1, k60).
+1764306469: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764306626: Client cv-agent closed its connection.
+1764306700: New connection from 172.18.0.1:49420 on port 1883.
+1764306700: New client connected from 172.18.0.1:49420 as cv-agent (p2, c1, k60).
+1764307713: Client saferide-backend disconnected.
+1764308178: New connection from 172.18.0.1:36042 on port 1883.
+1764308178: New client connected from 172.18.0.1:36042 as pico-w-saferide (p2, c1, k0).
+1764308213: New connection from 172.18.0.1:50948 on port 1883.
+1764308213: New client connected from 172.18.0.1:50948 as saferide-backend (p2, c1, k30).
+1764308283: Client cv-agent closed its connection.
+1764308354: New connection from ::1:33962 on port 1883.
+1764308354: New client connected from ::1:33962 as auto-84CB9695-11F3-D903-B728-772337A722BC (p2, c1, k60).
+1764308354: Client auto-84CB9695-11F3-D903-B728-772337A722BC disconnected.
+1764308361: Saving in-memory database to /mosquitto/data//mosquitto.db.
