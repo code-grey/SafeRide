@@ -1,0 +1,5 @@
+saferide
+saferide.exe
+*.log
+.git
+.DS_Store
