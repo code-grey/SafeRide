@@ -9,7 +9,7 @@
   import Fa from 'svelte-fa';
 </script>
 
-<div class="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text transition-colors duration-300 font-sans overflow-x-hidden">
+<div class="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text transition-colors duration-300 font-sans h-screen overflow-y-auto overflow-x-hidden">
   <Navbar />
 
   <!-- 1. Hero Section -->

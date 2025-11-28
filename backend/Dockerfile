@@ -15,7 +15,7 @@ RUN go mod tidy
 
 # Build the binary
 # Disabling CGO for static binary, though single stage doesn't strictly require it, it's good practice.
-RUN CGO_ENABLED=0 GOOS=linux go build -o saferide-engine .
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -trimpath -o saferide-engine .
 
 # Expose the port
 EXPOSE 8080

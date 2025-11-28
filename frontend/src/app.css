@@ -9,7 +9,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
-    /* Prevent double scrollbars */
+    /* Prevent double scrollbars globally, and handle per-page */
   }
 
   /* Custom Scrollbar */
