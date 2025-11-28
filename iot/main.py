@@ -3,23 +3,24 @@ import time
 import json
 import machine
 from umqtt.simple import MQTTClient
-import sh1106
+import sh1306 # This should be sh1106
 
 # ==========================================
 # 1. CONFIGURATION
 # ==========================================
-WIFI_SSID = "Airel_6000298987"        # <--- Update this!
-WIFI_PASSWORD = "air00022" # <--- Update this!
-MQTT_BROKER_IP = "192.168.1.5"      # <--- Update this!
+WIFI_SSID = "YOUR_WIFI_NAME"
+WIFI_PASSWORD = "YOUR_WIFI_PASSWORD"
+MQTT_BROKER_IP = "192.168.X.X"
+
 # ==========================================
 # 2. HARDWARE SETUP
 # ==========================================
-# Wires
+# Wires (Back to Safe, Rash, Stress)
 btn_safe = machine.Pin(14, machine.Pin.IN, machine.Pin.PULL_UP)
-btn_rash = machine.Pin(15, machine.Pin.IN, machine.Pin.PULL_UP) # Was Fatigue
-btn_stress = machine.Pin(16, machine.Pin.IN, machine.Pin.PULL_UP) # Was Distracted
+btn_rash = machine.Pin(15, machine.Pin.IN, machine.Pin.PULL_UP)
+btn_stress = machine.Pin(16, machine.Pin.IN, machine.Pin.PULL_UP)
 
-# OLED (SH1106 for 1.3" 128x64)
+# OLED (SH1106)
 i2c = machine.SoftI2C(sda=machine.Pin(0), scl=machine.Pin(1), freq=100000)
 oled = sh1106.SH1106_I2C(128, 64, i2c, addr=0x3c)
 led = machine.Pin("LED", machine.Pin.OUT)
@@ -28,6 +29,7 @@ led = machine.Pin("LED", machine.Pin.OUT)
 # 3. LOGIC
 # ==========================================
 MQTT_TOPIC = "vehicles/v-101/telemetry"
+VEHICLE_ID = "v-101"
 
 def connect_wifi():
     wlan = network.WLAN(network.STA_IF)
@@ -55,17 +57,17 @@ def connect_wifi():
         return ip
     return None
 
-def draw_status(status):
+def draw_status(status_text): # Reverted to single status
     oled.fill(0)
     oled.text("SafeRide", 35, 0)
     
-    # Draw a simple frame
+    # Draw frame
     oled.rect(0, 15, 128, 49, 1)
     
-    status = status.upper()
-    # Center text roughly (approx 8px per char)
-    x_pos = max(0, 64 - (len(status) * 4))
-    oled.text(status, x_pos, 35)
+    status_text = status_text.upper()
+    # Center text roughly
+    x_pos = max(0, 64 - (len(status_text) * 4))
+    oled.text(status_text, x_pos, 35)
     
     oled.show()
 
@@ -79,48 +81,41 @@ def main():
 
         client = MQTTClient("pico-w-saferide", MQTT_BROKER_IP, port=1883)
         client.connect()
-        
+
         # Initial Screen
-        draw_status("SAFE")
+        draw_status("READY")
         
         last_press = 0
         while True:
             now = time.time()
-            status = None
+            status_to_send = None
             
-            # Button Logic: Active Low (Pull-Up)
-            if btn_safe.value() == 0: status = "safe"
-            elif btn_rash.value() == 0: status = "rash driving"
-            elif btn_stress.value() == 0: status = "stress"
+            if btn_safe.value() == 0: status_to_send = "safe_vehicle"
+            elif btn_rash.value() == 0: status_to_send = "harsh turn"
+            elif btn_stress.value() == 0: status_to_send = "hard braking"
             
-            # Trigger only if button pressed & debounce passed
-            if status and (now - last_press > 0.5):
-                print(f"Sending: {status}")
-                draw_status(status)
+            if status_to_send and (now - last_press > 0.5):
+                print(f"Sending: {status_to_send} (from Pico)")
+                draw_status(status_to_send) # Update OLED immediately
                 
                 payload = json.dumps({
-                    "vehicle_id": "v-101",
+                    "vehicle_id": VEHICLE_ID,
                     "timestamp": time.time(),
-                    "status": status,
+                    "status": status_to_send,
                     "lat": 28.7041,
                     "long": 77.1025,
-                    "confidence": 0.99
+                    "confidence": 0.99 # No source field
                 })
                 client.publish(MQTT_TOPIC, payload)
                 last_press = now
-                
-                # Blink LED
-                led.off()
-                time.sleep(0.1)
-                led.on()
 
             time.sleep(0.05)
 
     except Exception as e:
-        print(e)
+        print(f"Critical Error: {e}")
         oled.fill(0)
         oled.text("Error:", 0, 0)
-        oled.text(str(e)[:16], 0, 15) # Truncate error
+        oled.text(str(e)[:16], 0, 15)
         oled.show()
         machine.reset()
 

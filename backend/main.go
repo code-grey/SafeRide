@@ -17,9 +17,10 @@ var (
 	blockchainService *BlockchainService // Global for blockchain service
 	mqttService       *MQTTService       // Global for MQTT service
 	redisService      *RedisService      // Global for Redis service
-	ctx          = context.Background()
-)	
-	// --- Main ---
+	ctx               = context.Background()
+)
+
+// --- Main ---
 
 func main() {
 	// --- Environment Variables ---
@@ -69,8 +70,23 @@ func main() {
 
 	// --- Gin Web Server ---
 	router := gin.Default()
+
+	// CORS Middleware
+	router.Use(func(c *gin.Context) {
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")
+
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(204)
+			return
+		}
+		c.Next()
+	})
+
 	SetupRoutes(router, redisService.Client(), ctx) // Pass redisService.Client() and ctx
-	
+
 	go func() {
 		if err := router.Run(":8080"); err != nil {
 			log.Fatalf("Gin server failed to run: %v", err)

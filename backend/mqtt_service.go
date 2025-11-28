@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/eclipse/paho.mqtt.golang"
+	mqtt "github.com/eclipse/paho.mqtt.golang"
 	"github.com/go-redis/redis/v8"
 	"golang.org/x/net/context"
 )
@@ -70,10 +70,32 @@ func (s *MQTTService) onMessageReceived() mqtt.MessageHandler {
 		// FORCE Overwrite Timestamp with Server Time (Source of Truth)
 		// Pico W has no RTC, so its timestamp is unreliable.
 		data.Timestamp = time.Now().Unix()
-		
+
 		log.Printf("DEBUG: onMessageReceived for Vehicle: %s, Status: %s at %d", data.VehicleID, data.Status, data.Timestamp)
 
-		// 1. Save Hot State (Latest)
+		// --- NEW: Split Status Logic ---
+		driverStatusKey := fmt.Sprintf("driver_status:%s", data.VehicleID)
+		vehicleStatusKey := fmt.Sprintf("vehicle_status:%s", data.VehicleID)
+
+		if data.Status == "safe_vehicle" {
+			s.redisClient.Set(s.ctx, vehicleStatusKey, "safe", 0)
+			data.Status = "safe" // Normalize for main logic
+			data.Source = "iot"
+		} else if data.Status == "harsh turn" || data.Status == "hard braking" {
+			s.redisClient.Set(s.ctx, vehicleStatusKey, data.Status, 0)
+			data.Source = "iot"
+		} else if data.Status == "safe" { // Assumed from CV
+			s.redisClient.Set(s.ctx, driverStatusKey, "safe", 0)
+			data.Source = "ai"
+		} else if data.Status == "fatigue" || data.Status == "distracted" || data.Status == "drowsy" {
+			s.redisClient.Set(s.ctx, driverStatusKey, data.Status, 0)
+			data.Source = "ai"
+		}
+
+		// Re-marshal payload with normalized status and timestamp
+		payload, _ = json.Marshal(data)
+
+		// 1. Save Hot State (Latest - Overall)
 		err := s.redisClient.Set(s.ctx, data.VehicleID, payload, time.Hour).Err()
 		if err != nil {
 			log.Printf("Failed to save to Redis: %v", err)
@@ -92,7 +114,6 @@ func (s *MQTTService) onMessageReceived() mqtt.MessageHandler {
 		lastPeriodicAttestationTsKey := fmt.Sprintf("last_periodic_attestation_timestamp:%s", data.VehicleID)
 		lastAlertTsKey := fmt.Sprintf("last_alert_timestamp:%s", data.VehicleID) // Rate Limiter Key
 
-
 		if data.Status == "safe" {
 			// Increment safe streak
 			streak, err := s.redisClient.Incr(s.ctx, safeStreakKey).Result()
@@ -109,8 +130,8 @@ func (s *MQTTService) onMessageReceived() mqtt.MessageHandler {
 					log.Printf("Failed to award points for safe streak: %v", err)
 					// Non-fatal error, continue processing
 				}
-				log.Printf("🎉 Vehicle %s earned %d points for safe streak! Current total: %s", data.VehicleID, s.redisClient.Get(s.ctx, pointsKey).Val())
-				
+				log.Printf("🎉 Vehicle %s earned %d points for safe streak! Current total: %s", data.VehicleID, POINTS_PER_STREAK, s.redisClient.Get(s.ctx, pointsKey).Val())
+
 				// --- NEW: Trigger Solana Safe Attestation (Streak-based) ---
 				totalPoints, err := s.redisClient.Get(s.ctx, pointsKey).Int() // Get current total points
 				if err != nil {
@@ -125,7 +146,7 @@ func (s *MQTTService) onMessageReceived() mqtt.MessageHandler {
 
 			// --- NEW: Time-based Periodic Safe Attestation Logic ---
 			currentTime := time.Now().Unix()
-			
+
 			// Get last periodic attestation timestamp
 			lastPeriodicAttestationTsStr, err := s.redisClient.Get(s.ctx, lastPeriodicAttestationTsKey).Result()
 			var lastPeriodicAttestationTs int64
@@ -151,9 +172,9 @@ func (s *MQTTService) onMessageReceived() mqtt.MessageHandler {
 			}
 
 			// Check conditions for periodic attestation
-			if (currentTime - lastPeriodicAttestationTs >= PERIODIC_SAFE_ATTESTATION_INTERVAL) &&
-			(currentTime - lastIncidentTs >= PERIODIC_SAFE_ATTESTATION_INTERVAL || lastIncidentTs == 0) {
-				
+			if (currentTime-lastPeriodicAttestationTs >= PERIODIC_SAFE_ATTESTATION_INTERVAL) &&
+				(currentTime-lastIncidentTs >= PERIODIC_SAFE_ATTESTATION_INTERVAL || lastIncidentTs == 0) {
+
 				go s.blockchainService.sendSolanaPeriodicSafeAttestation(data)
 				s.redisClient.Set(s.ctx, lastPeriodicAttestationTsKey, strconv.FormatInt(currentTime, 10), 0) // Store as string
 				log.Printf("✅ Periodic safe attestation triggered for %s", data.VehicleID)
@@ -181,7 +202,7 @@ func (s *MQTTService) onMessageReceived() mqtt.MessageHandler {
 			if time.Now().Unix()-lastAlertTs > 5 {
 				log.Printf("⚠️ INCIDENT DETECTED: %s (Vehicle: %s)", data.Status, data.VehicleID)
 				go s.blockchainService.sendSolanaAlert(data)
-				
+
 				// Update last alert timestamp
 				s.redisClient.Set(s.ctx, lastAlertTsKey, strconv.FormatInt(time.Now().Unix(), 10), 0)
 			} else {

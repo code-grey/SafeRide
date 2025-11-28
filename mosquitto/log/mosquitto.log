@@ -525,3 +525,35 @@
 1764262418: New client connected from 172.18.0.1:42672 as pico-w-saferide (p2, c1, k0).
 1764262520: New connection from 172.18.0.1:60252 on port 1883.
 1764262520: New client connected from 172.18.0.1:60252 as saferide-backend (p2, c1, k30).
+1764262863: Client pico-w-saferide closed its connection.
+1764262865: New connection from 172.18.0.1:41868 on port 1883.
+1764262865: New client connected from 172.18.0.1:41868 as pico-w-saferide (p2, c1, k0).
+1764263016: New connection from ::1:56138 on port 1883.
+1764263016: New client connected from ::1:56138 as auto-58C85237-1FBD-6894-EC02-DCB60031F18C (p2, c1, k60).
+1764263016: Client auto-58C85237-1FBD-6894-EC02-DCB60031F18C disconnected.
+1764263184: New connection from 172.18.0.1:45278 on port 1883.
+1764263184: New client connected from 172.18.0.1:45278 as cv-agent (p2, c1, k60).
+1764263546: Client cv-agent closed its connection.
+1764264161: Client saferide-backend disconnected.
+1764264165: New connection from 172.18.0.1:48534 on port 1883.
+1764264165: New client connected from 172.18.0.1:48534 as saferide-backend (p2, c1, k30).
+1764264168: New connection from 172.18.0.1:48548 on port 1883.
+1764264168: New client connected from 172.18.0.1:48548 as cv-agent (p2, c1, k60).
+1764264331: Client pico-w-saferide closed its connection.
+1764264337: New connection from 172.18.0.1:48448 on port 1883.
+1764264337: New client connected from 172.18.0.1:48448 as pico-w-saferide (p2, c1, k0).
+1764264355: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764265959: Client pico-w-saferide closed its connection.
+1764265975: Client saferide-backend disconnected.
+1764265981: New connection from 172.18.0.1:52488 on port 1883.
+1764265981: New client connected from 172.18.0.1:52488 as saferide-backend (p2, c1, k30).
+1764266080: Client cv-agent closed its connection.
+1764266356: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764266483: Client saferide-backend disconnected.
+1764266489: New connection from 172.18.0.1:48838 on port 1883.
+1764266489: New client connected from 172.18.0.1:48838 as saferide-backend (p2, c1, k30).
+1764266512: New connection from 172.18.0.1:35270 on port 1883.
+1764266512: New client connected from 172.18.0.1:35270 as cv-agent (p2, c1, k60).
+1764266597: Client cv-agent closed its connection.
+1764266915: mosquitto version 2.0.22 terminating
+1764266915: Saving in-memory database to /mosquitto/data//mosquitto.db.

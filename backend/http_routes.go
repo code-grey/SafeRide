@@ -86,10 +86,10 @@ func SetupRoutes(router *gin.Engine, redisClient *redis.Client, ctx context.Cont
 
 		// Return Success (In prod, return JWT. Here, simple user info)
 		c.JSON(200, gin.H{
-			"message": "Login successful", 
+			"message":    "Login successful",
 			"vehicle_id": storedUser.VehicleID,
-			"name": storedUser.Name,
-			"email": storedUser.Email,
+			"name":       storedUser.Name,
+			"email":      storedUser.Email,
 		})
 	})
 
@@ -105,8 +105,29 @@ func SetupRoutes(router *gin.Engine, redisClient *redis.Client, ctx context.Cont
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Redis error"})
 			return
 		}
-		c.Header("Content-Type", "application/json")
-		c.String(http.StatusOK, val)
+
+		// Fetch separate statuses
+		driverStatus, err := redisClient.Get(ctx, "driver_status:"+vehicleID).Result()
+		if err != nil {
+			driverStatus = "unknown"
+		}
+
+		vehicleStatus, err := redisClient.Get(ctx, "vehicle_status:"+vehicleID).Result()
+		if err != nil {
+			vehicleStatus = "unknown"
+		}
+
+		// Unmarshal existing telemetry to inject new fields
+		var telemetry map[string]interface{}
+		if err := json.Unmarshal([]byte(val), &telemetry); err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "JSON parse error"})
+			return
+		}
+
+		telemetry["driver_status"] = driverStatus
+		telemetry["vehicle_status"] = vehicleStatus
+
+		c.JSON(http.StatusOK, telemetry)
 	})
 
 	router.GET("/api/history/:vehicle_id", func(c *gin.Context) {
@@ -119,7 +140,9 @@ func SetupRoutes(router *gin.Engine, redisClient *redis.Client, ctx context.Cont
 		}
 		jsonArray := "["
 		for i, v := range vals {
-			if i > 0 { jsonArray += "," }
+			if i > 0 {
+				jsonArray += ","
+			}
 			jsonArray += v
 		}
 		jsonArray += "]"
@@ -137,7 +160,9 @@ func SetupRoutes(router *gin.Engine, redisClient *redis.Client, ctx context.Cont
 		}
 		jsonArray := "["
 		for i, v := range vals {
-			if i > 0 { jsonArray += "," }
+			if i > 0 {
+				jsonArray += ","
+			}
 			jsonArray += v
 		}
 		jsonArray += "]"
@@ -150,7 +175,7 @@ func SetupRoutes(router *gin.Engine, redisClient *redis.Client, ctx context.Cont
 	router.GET("/api/points/:vehicle_id", func(c *gin.Context) {
 		vehicleID := c.Param("vehicle_id")
 		key := fmt.Sprintf("points:%s", vehicleID)
-		
+
 		pointsStr, err := redisClient.Get(ctx, key).Result()
 		if err == redis.Nil {
 			// No points yet, return 0
@@ -160,8 +185,46 @@ func SetupRoutes(router *gin.Engine, redisClient *redis.Client, ctx context.Cont
 			c.JSON(500, gin.H{"error": "Redis error"})
 			return
 		}
-		
+
 		c.Header("Content-Type", "application/json")
 		c.JSON(200, gin.H{"vehicle_id": vehicleID, "points": pointsStr}) // pointsStr is string representation of int
 	})
+
+	router.POST("/api/redeem-points", func(c *gin.Context) {
+		var req RedeemRequest
+		if err := c.ShouldBindJSON(&req); err != nil {
+			c.JSON(400, gin.H{"error": err.Error()})
+			return
+		}
+
+		key := fmt.Sprintf("points:%s", req.VehicleID)
+
+		// Check balance first
+		currentPointsStr, err := redisClient.Get(ctx, key).Result()
+		if err == redis.Nil {
+			c.JSON(400, gin.H{"error": "No points available"})
+			return
+		} else if err != nil {
+			c.JSON(500, gin.H{"error": "Redis error"})
+			return
+		}
+
+		var currentPoints int
+		fmt.Sscanf(currentPointsStr, "%d", &currentPoints)
+
+		if currentPoints < req.Points {
+			c.JSON(400, gin.H{"error": "Insufficient balance"})
+			return
+		}
+
+		// Atomically decrement
+		newBalance, err := redisClient.DecrBy(ctx, key, int64(req.Points)).Result()
+		if err != nil {
+			c.JSON(500, gin.H{"error": "Failed to deduct points"})
+			return
+		}
+
+		c.JSON(200, gin.H{"message": "Redemption successful", "new_balance": newBalance})
+	})
+
 }
