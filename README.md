@@ -107,6 +107,3 @@ If you don't have a webcam or want to force specific states, use our simulation 
 *   [**Insurance Model**](docs/insurance-ai-logic.md): The math behind the safety score.
 
 ---
-
-**License:** MIT
-**Team CodeGrey**
