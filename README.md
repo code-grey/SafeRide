@@ -1,6 +1,6 @@
 # SafeRide: DePIN Driver Safety Network 🛡️🚗
 
-> **Hackathon Winner Candidate 🏆 | Solana DePIN Track**
+<!-- >> **Hackathon Winner Candidate 🏆 | Solana DePIN Track** -->
 
 **SafeRide** is a Decentralized Physical Infrastructure Network (DePIN) that incentivizes safe driving using AI, IoT, and the Solana Blockchain. It detects driver fatigue and distraction in real-time, logging critical safety data immutably on-chain.
 
