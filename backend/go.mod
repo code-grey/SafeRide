@@ -4,11 +4,11 @@ go 1.24.4
 
 require (
 	github.com/eclipse/paho.mqtt.golang v1.5.0
-	github.com/gagliardetto/solana-go v1.14.0
-	github.com/gin-gonic/gin v1.11.0
+	github.com/gagliardetto/solana-go v1.12.0
+	github.com/gin-gonic/gin v1.10.0
 	github.com/go-redis/redis/v8 v8.11.5
-	golang.org/x/crypto v0.44.0
-	golang.org/x/net v0.47.0
+	golang.org/x/crypto v0.31.0
+	golang.org/x/net v0.33.0
 )
 
 require (
