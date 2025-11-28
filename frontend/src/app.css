@@ -8,6 +8,8 @@
     font-family: 'Sora', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    /* Prevent double scrollbars */
   }
 
   /* Custom Scrollbar */
@@ -31,7 +33,7 @@
   /* Colors */
   --color-brand-primary: #007BFF;
   --color-brand-secondary: #6C757D;
-  
+
   --color-light-background: #F8F9FA;
   --color-light-surface: #FFFFFF;
   --color-light-text: #212529;
@@ -66,15 +68,38 @@
   --animate-pulse-glow: pulse-glow 2s infinite;
 
   @keyframes fade-in-down {
-    0% { opacity: 0; transform: translateY(-10px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
+
   @keyframes fade-in-up {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
+
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3); }
-    50% { box-shadow: 0 0 20px rgba(0, 243, 255, 0.8), 0 0 30px rgba(0, 243, 255, 0.5); }
+
+    0%,
+    100% {
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+    }
+
+    50% {
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.8), 0 0 30px rgba(0, 243, 255, 0.5);
+    }
   }
 }
