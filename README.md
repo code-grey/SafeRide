@@ -76,14 +76,17 @@ run_cv.bat
 
 ## 🧪 Simulation / Manual Testing
 
-If you don't have a webcam or want to force specific states, use our simulation scripts:
+If you don't have a webcam or want to force specific states, use our simulation scripts found in `scripts/windows` (for .bat) or `scripts/linux` (for .sh):
 
-| Status | Script | Description |
+| Status Category | Script Name | Description |
 | :--- | :--- | :--- |
-| **Safe** | `scripts/send_safe.bat` | Resets status to Normal. |
-| **Fatigue** | `scripts/send_fatigue.bat` | Triggers Red Alert & Solana Transaction. |
-| **Rash** | `scripts/send_rash.bat` | Simulates dangerous driving. |
-| **Drowsy** | `scripts/send_drowsy.bat` | Simulates early signs of sleepiness. |
+| **Driver (AI)** | `send_safe_driver` | Resets Driver Status to Green. |
+| | `send_fatigue` | Triggers Red Alert (Fatigue) & Solana Transaction. |
+| | `send_distracted` | Triggers Distracted Alert. |
+| | `send_drowsy` | Triggers Drowsy Alert. |
+| **Vehicle (IoT)** | `send_safe_vehicle` | Resets Vehicle Status to Green. |
+| | `send_harsh_turn` | Simulates dangerous turning. |
+| | `send_hard_braking` | Simulates emergency braking. |
 
 ---
 

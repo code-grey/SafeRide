@@ -60,14 +60,12 @@
   - **Dataset 2 (Purple):** Vehicle Risk (Source: IoT).
 
 ## Verification Steps
-1.  **Run Infrastructure:** `docker-compose -f docker-compose.infra.yml up -d`
-2.  **Run Backend:** `cd backend && go run main.go`
-3.  **Run Frontend:** `cd frontend && npm run dev`
-4.  **Flush Cache (Clean Slate):**
+1.  **Run Infrastructure:** `docker-compose up --build -d` (One-Click)
+2.  **Flush Cache (Clean Slate):**
     - **Redis:** `docker exec -it saferide-redis redis-cli FLUSHALL`
-    - **Restart Backend:** Stop and start the Go server to reset in-memory state.
-5.  **Test Rewards:** Go to `/rewards`, click Redeem. Check if points deduct.
-6.  **Test Monitor:**
-    - Send IoT Alert (Harsh Turn) -> Verify "Vehicle Status" updates to Purple.
-    - Send CV Alert (Fatigue) -> Verify "Driver Status" updates to Red.
-7.  **Test Graph:** Generate both alerts and watch the graph plot two lines at correct Y-levels.
+    - **Restart Backend:** `docker restart saferide-backend`
+3.  **Test Rewards:** Go to `/rewards`, click Redeem. Check if points deduct.
+4.  **Test Monitor:**
+    - **Windows:** Run `scripts/windows/send_harsh_turn.bat` -> Verify "Vehicle Status" updates to Purple.
+    - **Linux/Mac:** Run `scripts/linux/send_fatigue.sh` -> Verify "Driver Status" updates to Red.
+5.  **Test Graph:** Generate both alerts and watch the graph plot two lines at correct Y-levels.
