@@ -1,6 +1,6 @@
 module saferide/backend
 
-go 1.24.4
+go 1.23.0
 
 require (
 	github.com/eclipse/paho.mqtt.golang v1.5.1
