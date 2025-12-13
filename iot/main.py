@@ -3,7 +3,7 @@ import time
 import json
 import machine
 from umqtt.simple import MQTTClient
-import sh1106 # This should be sh1106
+import sh1106 # This should be sh1106 if 1.2 inch display, snmaller display uses the sh1306 driver
 import random
 
 # ==========================================
