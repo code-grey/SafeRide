@@ -9,9 +9,9 @@ import random
 # ==========================================
 # 1. CONFIGURATION
 # ==========================================
-WIFI_SSID = "Airel_6000298987"        # <--- Update this!
-WIFI_PASSWORD = "air00022" # <--- Update this!
-MQTT_BROKER_IP = "192.168.1.4"      # <--- Update this!
+WIFI_SSID = "YOUR-WIFI-NAME(2.4 GHz)"        # <--- Update this!
+WIFI_PASSWORD = "YOUR-WIFI-PASSWORD" # <--- Update this!
+MQTT_BROKER_IP = "FIND THE IP OF YOUR LAPTOP"      # <--- Update this!
 
 # ==========================================
 # 2. HARDWARE SETUP
